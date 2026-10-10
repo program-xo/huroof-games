@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -129,7 +129,7 @@ h2{font-size:1.15em}
 @keyframes toast{from{transform:translateX(-50%) scale(.5);opacity:0}}
 .fl{position:absolute;z-index:36;pointer-events:none;font-weight:800;font-size:1.6em;color:var(--ink);text-shadow:0 2px 0 var(--card),0 -2px 0 var(--card),2px 0 0 var(--card),-2px 0 0 var(--card);transform:translate(-50%,-50%);animation:fl .9s ease-out forwards;white-space:nowrap}
 @keyframes fl{to{transform:translate(-50%,-220%);opacity:0}}
-@media (orientation:portrait){#lanes{flex-direction:column}}
+@media (orientation:portrait){#lanes{flex-direction:column}#lanes.n4{flex-direction:row;flex-wrap:wrap}#lanes.n4 .lane{flex:1 1 40%}}
 @media (max-width:640px){
   #g-prompt{display:none}
   .gbar{gap:.4em}
@@ -169,7 +169,8 @@ h2{font-size:1.15em}
 .mm-back .st{fill:#fff;stroke:var(--on)}
 .mm-front{background:var(--card);color:var(--ink);transform:rotateY(180deg);gap:calc(var(--cs)*.02)}
 .mm-front .big{font-size:calc(var(--cs)*.56);line-height:1.2}
-.mm-front .nmc{font-size:calc(var(--cs)*.26);font-weight:800}
+.mm-front .nmc{font-size:calc(var(--cs)*.26);font-weight:800;text-align:center;line-height:1.05;max-width:100%;padding:0 .08em}
+.mm-front .nmc.sm{font-size:calc(var(--cs)*.16)}
 .mm-card.got .mm-front{background:var(--pc);color:var(--on);animation:got .4s}
 @keyframes got{50%{transform:rotateY(180deg) scale(1.08)}}
 
@@ -197,7 +198,7 @@ h2{font-size:1.15em}
 /* podium */
 #podium{align-items:center;justify-content:center;gap:calc(var(--gap)*1.5);padding:var(--gap);text-align:center;overflow-y:auto}
 #p-title{font-size:clamp(1.8em,6vmin,3.6em)}
-#p-stand{display:flex;align-items:flex-end;justify-content:center;gap:var(--gap);width:min(92%,46em)}
+#p-stand{display:flex;align-items:flex-end;justify-content:center;gap:var(--gap);width:min(94%,56em)}
 .pod{flex:1;max-width:14em;display:flex;flex-direction:column;align-items:center;min-width:0}
 .pod-av{font-size:clamp(2.4em,9vmin,5em);line-height:1.1}
 .pod-crown{font-size:clamp(1.4em,5vmin,2.8em);line-height:1;margin-bottom:-.15em}
@@ -209,6 +210,7 @@ h2{font-size:1.15em}
 .pod.r1 .pod-blk{height:clamp(8em,30vmin,15em)}
 .pod.r2 .pod-blk{height:clamp(6em,22vmin,11em)}
 .pod.r3 .pod-blk{height:clamp(4.6em,15vmin,8em)}
+.pod.r4 .pod-blk{height:clamp(3.6em,10vmin,5.6em)}
 .p-btns{display:flex;gap:1em;flex-wrap:wrap;justify-content:center;font-size:1.2em}
 #confetti{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;z-index:80}
 #confetti i{position:absolute;top:-4vh;width:1.4vmin;height:2.4vmin;border-radius:3px;animation:fall linear forwards}
@@ -261,11 +263,9 @@ h2{font-size:1.15em}
 #neu .gbar{flex-wrap:wrap}
 #n-title{font-weight:800;font-size:1.2em;white-space:nowrap}
 .dy-fill{flex:1}
-#n-round{font-weight:800;background:var(--bg2);border-radius:999px;padding:.15em .8em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dy-seg{display:flex;gap:.35em}
 .dy-seg button{font-weight:800;background:var(--bg);border:var(--bw) solid var(--line);border-radius:999px;padding:.15em 1em;min-height:2.3em}
 .dy-seg button.on{background:var(--blue);color:#fff}
-#n-home.arm{width:auto;padding:0 .8em;background:var(--pom);color:var(--on);font-weight:700}
 #n-view{flex:1;min-height:0;overflow-y:auto;padding:calc(var(--gap)*1.2) clamp(16px,2.4vw,40px) calc(var(--gap)*2.5)}
 .dy{display:flex;flex-direction:column;gap:calc(var(--gap)*1.4);max-width:66em;margin:0 auto}
 .dy p{margin:0}
@@ -323,57 +323,36 @@ h2{font-size:1.15em}
 .dy-reveal b{font-size:2.6em;font-weight:800;line-height:1.1}
 .dy-reveal span{font-size:1.2em}
 
-/* play: game */
-.dy-scores{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:var(--gap);padding-top:4px}
-.dy-sc{display:flex;align-items:center;gap:.4em;min-width:0;background:var(--card);color:var(--ink);border:var(--bw) solid var(--line);border-radius:999px;padding:.2em .8em;font-weight:800}
-.dy-sc .av{font-size:1.3em;line-height:1}
-.dy-sc .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dy-sc .sc{display:inline-flex;align-items:center;gap:.25em;font-size:1.2em;font-variant-numeric:tabular-nums}
-.dy-sc .sc .st{fill:var(--saffron)}
-.dy-sc.on{background:var(--pc);color:var(--on);transform:translateY(-3px);box-shadow:0 5px 0 var(--line)}
-.dy-sc.on .sc .st{fill:#fff;stroke:var(--on)}
-.dy-stage{display:flex;flex-direction:column;gap:.8em;border-top-width:.7em;border-top-color:var(--pc)}
-.dy-turn{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1em .7em}
-.dy-turn b{font-size:1.7em;font-weight:800;line-height:1.1}
-.dy-turn span{font-size:1.25em;font-weight:700;color:var(--muted)}
-.dy-stim{display:flex;flex-direction:column;gap:.3em}
-.dy-stim .dy-bd{box-shadow:none;background:var(--bg)}
-.dy-nm{font-size:clamp(3em,14vmin,6.5em);font-weight:800;line-height:1.1;text-align:center;padding:.2em 0}
-.dy-opts{display:grid;grid-template-columns:repeat(var(--o,4),minmax(0,1fr));gap:var(--gap)}
-.dy-opt{position:relative;background:var(--bg);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 5px 0 var(--line);font-size:3.5em;line-height:1.6;min-height:1.9em;padding:0 0 .12em}
-.dy-opt:not(:disabled):active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
-.dy-opt:disabled{cursor:default}
-.dy-opt em{position:absolute;top:.1em;right:.35em;font-family:var(--f-ui);font-style:normal;font-weight:800;font-size:.45em;line-height:1.3}
-.dy-opt.right{background:var(--ok-bg)} .dy-opt.right em{color:var(--ok)}
-.dy-opt.wrong{background:var(--no-bg)} .dy-opt.wrong em{color:var(--no)}
-.dy-res{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em;border:var(--bw) solid var(--line);border-radius:var(--r);padding:.5em .9em;font-weight:800}
-.dy-res.ok{background:var(--ok-bg);color:var(--ok)}
-.dy-res.no{background:var(--no-bg);color:var(--no)}
-.dy-res-ic{font-size:2.6em;line-height:1}
-.dy-res-tx{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .6em;font-size:1.7em;line-height:1.2}
-.dy-res-tx span{color:var(--ink)}
-.dy-res-tx .ar{font-size:1.5em;line-height:1.1}
-
-/* play: results */
-.dy-win{font-size:clamp(2.2em,8vmin,4.4em);text-align:center;line-height:1.1}
-.dy-rank{display:flex;flex-direction:column;gap:.5em;list-style:none;margin:0 auto;padding:0;width:100%;max-width:26em;font-size:1.5em}
-.dy-rank li{display:flex;align-items:center;gap:.6em;background:var(--pc);color:var(--on);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);padding:.3em .8em;font-weight:800}
-.dy-rank li.r1{font-size:1.35em}
-.dy-rank .pos{min-width:1.4em}
-.dy-rank .nm{flex:1;min-width:0;overflow-wrap:anywhere}
-.dy-rank .sc{display:inline-flex;align-items:center;gap:.25em;background:#fff;border:2px solid var(--on);border-radius:999px;padding:0 .5em;font-variant-numeric:tabular-nums}
-.dy-rank .sc .st{fill:var(--saffron);stroke:var(--on)}
-.dy-miss{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5em .8em}
-
 @media (max-width:640px){
   .dy-lcard,.dy-g3{grid-template-columns:minmax(0,1fr)}
-  .dy-g4,.dy-scores,.dy-opts.o4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .dy-opt{font-size:2.8em}
-  .dy-rank{font-size:1.2em}
-  .dy-res-tx{font-size:1.3em}
+  .dy-g4{grid-template-columns:repeat(2,minmax(0,1fr))}
   #neu .dy-seg{order:5;flex:1 0 100%}
   #neu .dy-seg button{flex:1;padding:.15em .4em}
 }
+
+/* quiz lanes (new games): sizes follow the lane through --qu */
+.qz{flex:1;min-height:0;display:flex;flex-direction:column}
+.qz-stim{flex:1 1 44%;min-height:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--qu)*.015);padding:calc(var(--qu)*.04);background:var(--sky);border-bottom:var(--bw) solid var(--line);text-align:center;overflow:hidden}
+.qz-stim.ok{background:var(--ok-bg)}
+.qz-stim.no,.qz-stim.late{background:var(--no-bg)}
+.qz-big{font-size:calc(var(--qu)*.46);line-height:1.25;color:var(--ink)}
+.qz-word{font-size:calc(var(--qu)*.3);line-height:1.4;color:var(--ink)}
+.qz-name{font-size:calc(var(--qu)*.21);font-weight:800;line-height:1.05;max-width:100%}
+.qz-cap{font-size:calc(var(--qu)*.062);font-weight:500;color:var(--muted);max-width:100%}
+.qz-cap b{color:var(--ink)}
+.qz-ic{position:absolute;top:.15em;left:.35em;font-size:calc(var(--qu)*.17);font-weight:800;line-height:1}
+.qz-stim.ok .qz-ic{color:var(--ok)}
+.qz-stim.no .qz-ic,.qz-stim.late .qz-ic{color:var(--no)}
+.qz-stim.ok .qz-big,.qz-stim.no .qz-big,.qz-stim.late .qz-big{font-size:calc(var(--qu)*.36);line-height:1.2}
+.qz-rn{font-size:calc(var(--qu)*.12);font-weight:800;line-height:1.1}
+.qz-pts{font-size:calc(var(--qu)*.075);font-weight:800;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:0 .7em}
+.qz-opts{flex:1 1 56%;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-auto-rows:minmax(0,1fr);gap:calc(var(--qu)*.045);padding:calc(var(--qu)*.05)}
+.qz-opt{min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--ink);border:var(--bw) solid var(--line);border-radius:calc(var(--qu)*.06);box-shadow:0 4px 0 var(--line);padding:0 0 .12em;font-size:calc(var(--qu)*.24);line-height:1.2;touch-action:none}
+.qz-opt.txt{font-family:var(--f-ui);font-weight:800;font-size:calc(var(--qu)*.085);line-height:1.1;padding:.2em}
+.qz-opt:not(:disabled):active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.qz-opt:disabled{cursor:default}
+.qz-opt.right{background:var(--ok-bg);box-shadow:0 4px 0 var(--ok)}
+.qz-opt.wrong{background:var(--no-bg);opacity:.7}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -386,68 +365,68 @@ h2{font-size:1.15em}
   <header class="top">
     <div class="logo"><span class="logo-ar" lang="ar">حروف</span><span class="logo-en">Huroof Games</span></div>
     <div class="top-btns">
-      <button type="button" class="ib board-btn" aria-label="Open whiteboard">✏️</button>
-      <button type="button" class="ib mute-btn" aria-label="Sound on or off">🔊</button>
-      <button type="button" class="ib full-btn" aria-label="Full screen">⛶</button>
+      <button type="button" class="ib board-btn" aria-label="Tafel öffnen">✏️</button>
+      <button type="button" class="ib mute-btn" aria-label="Ton an oder aus">🔊</button>
+      <button type="button" class="ib full-btn" aria-label="Vollbild">⛶</button>
     </div>
   </header>
-  <section class="new-sec" lang="de">
-    <div class="sec-h"><span class="tag-new">Neu</span><h2>Dad bis Ya</h2><p>4 Spieler · 14 Buchstaben</p></div>
+  <section class="new-sec">
+    <div class="sec-h"><span class="tag-new">Neu</span><h2>Dad bis Ya</h2><p>4 Spieler gleichzeitig · 14 Buchstaben</p></div>
     <div class="new-cards">
       <button type="button" class="gcard wide" data-neu="lernen" style="--gc:#8CC8FF">
         <span class="g-art" aria-hidden="true"><span class="em">👀</span><span class="ar">ض</span></span>
         <span class="g-name">Lernen</span><span class="g-desc">Schauen, hören, sprechen. Ohne Punkte.</span>
       </button>
-      <button type="button" class="gcard" data-neu="find" style="--gc:#FFD05C">
+      <button type="button" class="gcard" data-game="find" style="--gc:#FFD05C">
         <span class="g-art" aria-hidden="true"><span class="em">🔎</span><span class="ar">ع</span></span>
         <span class="g-name">Finde den Buchstaben</span><span class="g-desc">Lies den Namen. Tipp auf den Buchstaben.</span>
       </button>
-      <button type="button" class="gcard" data-neu="form" style="--gc:#62D8CB">
+      <button type="button" class="gcard" data-game="name" style="--gc:#FF8FA0">
+        <span class="g-art" aria-hidden="true"><span class="em">❓</span><span class="ar">ط</span></span>
+        <span class="g-name">Wie heißt er?</span><span class="g-desc">Schau den Buchstaben an. Tipp auf den Namen.</span>
+      </button>
+      <button type="button" class="gcard" data-game="form" style="--gc:#62D8CB">
         <span class="g-art" aria-hidden="true"><span class="em">🧩</span><span class="ar">ـغـ</span></span>
         <span class="g-name">Formen-Jagd</span><span class="g-desc">So sieht er im Wort aus. Wer ist das?</span>
       </button>
-      <button type="button" class="gcard" data-neu="word" style="--gc:#BDB0FF">
+      <button type="button" class="gcard" data-game="word" style="--gc:#BDB0FF">
         <span class="g-art" aria-hidden="true"><span class="em">📖</span><span class="ar">ق</span></span>
         <span class="g-name">Wort-Jagd</span><span class="g-desc">Welcher Buchstabe steckt im Wort?</span>
-      </button>
-      <button type="button" class="gcard" data-neu="say" style="--gc:#FF8FA0">
-        <span class="g-art" aria-hidden="true"><span class="em">🗣️</span><span class="ar">ط</span></span>
-        <span class="g-name">Sag den Laut</span><span class="g-desc">Sprich den Laut. Die Lehrkraft entscheidet.</span>
       </button>
     </div>
   </section>
   <details class="old-sec">
-    <summary lang="de">Alte Spiele <span>4 Spiele</span></summary>
+    <summary>Alte Spiele <span>4 Spiele</span></summary>
   <div class="home-grid">
     <div class="setup">
       <div class="panel">
-        <div class="panel-h"><h2>Who is playing?</h2><div class="seg" id="count" role="group" aria-label="Number of players"></div></div>
+        <div class="panel-h"><h2>Wer spielt?</h2><div class="seg" id="count" role="group" aria-label="Anzahl Spieler"></div></div>
         <div id="pcards"></div>
-        <p class="hint">Give each child their own level so different ages can play side by side. Tap a picture or colour to change it.</p>
+        <p class="hint">Jedes Kind bekommt seine eigene Stufe. So können Kleine und Große zusammen spielen. Tipp auf ein Bild oder eine Farbe, um sie zu ändern.</p>
       </div>
       <div class="panel settings">
-        <h2>Which letters?</h2>
+        <h2>Welche Buchstaben?</h2>
         <div class="chips" id="sets"></div>
-        <h2>How long?</h2>
+        <h2>Wie lange?</h2>
         <div class="chips" id="lens"></div>
       </div>
     </div>
     <div class="games" id="games">
       <button type="button" class="gcard" data-game="trace" style="--gc:#BDB0FF">
         <span class="g-art" aria-hidden="true"><span class="em">✏️</span><span class="ar">ب</span></span>
-        <span class="g-name">Trace it</span><span class="g-desc">Draw over the giant letter and earn stars.</span>
+        <span class="g-name">Nachschreiben</span><span class="g-desc">Fahr den großen Buchstaben nach und sammle Sterne.</span>
       </button>
       <button type="button" class="gcard" data-game="pop" style="--gc:#FF8FA0">
         <span class="g-art" aria-hidden="true"><span class="em">🎈</span><span class="ar">ت</span></span>
-        <span class="g-name">Balloon pop</span><span class="g-desc">Pop every balloon that shows the right letter.</span>
+        <span class="g-name">Ballons</span><span class="g-desc">Lass alle Ballons mit dem richtigen Buchstaben platzen.</span>
       </button>
       <button type="button" class="gcard" data-game="match" style="--gc:#62D8CB">
         <span class="g-art" aria-hidden="true"><span class="em">🃏</span><span class="ar">ج</span></span>
-        <span class="g-name">Memory match</span><span class="g-desc">Flip the cards and find each letter's pair.</span>
+        <span class="g-name">Memory</span><span class="g-desc">Dreh die Karten um und finde die Paare.</span>
       </button>
       <button type="button" class="gcard" data-game="train" style="--gc:#FFD05C">
         <span class="g-art" aria-hidden="true"><span class="em">🚂</span><span class="ar">د</span></span>
-        <span class="g-name">Alphabet train</span><span class="g-desc">Drag the letters onto the train in order.</span>
+        <span class="g-name">Buchstaben-Zug</span><span class="g-desc">Zieh die Buchstaben der Reihe nach auf den Zug.</span>
       </button>
     </div>
   </div>
@@ -456,14 +435,14 @@ h2{font-size:1.15em}
 
 <section id="game" class="screen" hidden>
   <header class="gbar">
-    <button type="button" class="ib" id="g-home" aria-label="Back to games">🏠</button>
+    <button type="button" class="ib" id="g-home" aria-label="Zurück zum Start">🏠</button>
     <div class="g-mid"><span id="g-title"></span><span id="g-prompt"></span></div>
     <span id="g-round"></span>
     <div class="top-btns">
-      <button type="button" class="ib" id="g-say" aria-label="Say the letter again" hidden>🗣️</button>
-      <button type="button" class="ib mute-btn" aria-label="Sound on or off">🔊</button>
-      <button type="button" class="ib board-btn" aria-label="Open whiteboard">✏️</button>
-      <button type="button" class="ib full-btn" aria-label="Full screen">⛶</button>
+      <button type="button" class="ib" id="g-say" aria-label="Buchstaben noch einmal hören" hidden>🗣️</button>
+      <button type="button" class="ib mute-btn" aria-label="Ton an oder aus">🔊</button>
+      <button type="button" class="ib board-btn" aria-label="Tafel öffnen">✏️</button>
+      <button type="button" class="ib full-btn" aria-label="Vollbild">⛶</button>
     </div>
   </header>
   <div class="tbar"><i id="g-time"></i></div>
@@ -474,14 +453,14 @@ h2{font-size:1.15em}
   <h1 id="p-title"></h1>
   <div id="p-stand"></div>
   <div class="p-btns">
-    <button type="button" class="btn" id="p-again">Play again</button>
-    <button type="button" class="btn alt" id="p-menu">Choose a game</button>
+    <button type="button" class="btn" id="p-again">Nochmal</button>
+    <button type="button" class="btn alt" id="p-menu">Zum Start</button>
   </div>
 </section>
 
-<section id="neu" class="screen" lang="de" hidden>
+<section id="neu" class="screen" hidden>
   <header class="gbar">
-    <button type="button" class="ib" id="n-home" aria-label="Zum Start">🏠</button>
+    <button type="button" class="ib" id="n-home" aria-label="Zurück zum Start">🏠</button>
     <span id="n-title">Lernen</span>
     <div class="dy-seg" id="n-tabs" role="group" aria-label="Lern-Art">
       <button type="button" data-act="tab" data-v="buchstaben">Buchstaben</button>
@@ -489,7 +468,6 @@ h2{font-size:1.15em}
       <button type="button" data-act="tab" data-v="karten">Karten</button>
     </div>
     <span class="dy-fill"></span>
-    <span id="n-round" hidden></span>
     <div class="top-btns">
       <button type="button" class="ib mute-btn" aria-label="Ton an oder aus">🔊</button>
       <button type="button" class="ib board-btn" aria-label="Tafel öffnen">✏️</button>
@@ -503,24 +481,24 @@ h2{font-size:1.15em}
   <div id="bd-guide" hidden><span class="ar" lang="ar"></span><b></b></div>
   <canvas id="bd-cv"></canvas>
   <div id="bd-tools">
-    <div class="grp" id="bd-pens" role="group" aria-label="Pen colour"></div>
+    <div class="grp" id="bd-pens" role="group" aria-label="Stiftfarbe"></div>
     <span class="sep"></span>
-    <div class="grp" id="bd-sizes" role="group" aria-label="Pen size"></div>
+    <div class="grp" id="bd-sizes" role="group" aria-label="Stiftgröße"></div>
     <span class="sep"></span>
     <div class="grp">
-      <button type="button" class="ib" data-b="erase" aria-label="Eraser">🧽</button>
-      <button type="button" class="ib" data-b="undo" aria-label="Undo">↩️</button>
-      <button type="button" class="ib" data-b="clear" aria-label="Clear the board">🗑️</button>
-      <button type="button" class="ib" data-b="solid" aria-label="Blank board or draw over the game">⬜</button>
+      <button type="button" class="ib" data-b="erase" aria-label="Radierer">🧽</button>
+      <button type="button" class="ib" data-b="undo" aria-label="Zurück">↩️</button>
+      <button type="button" class="ib" data-b="clear" aria-label="Tafel leeren">🗑️</button>
+      <button type="button" class="ib" data-b="solid" aria-label="Leere Tafel oder über das Spiel malen">⬜</button>
     </div>
     <span class="sep"></span>
     <div class="grp">
-      <button type="button" class="ib" data-b="prev" aria-label="Previous letter">◀</button>
-      <button type="button" class="ib ar" id="bd-letter" data-b="guide" aria-label="Show a letter to copy" lang="ar">ا</button>
-      <button type="button" class="ib" data-b="next" aria-label="Next letter">▶</button>
+      <button type="button" class="ib" data-b="prev" aria-label="Voriger Buchstabe">◀</button>
+      <button type="button" class="ib ar" id="bd-letter" data-b="guide" aria-label="Buchstaben zum Abschreiben zeigen" lang="ar">ا</button>
+      <button type="button" class="ib" data-b="next" aria-label="Nächster Buchstabe">▶</button>
     </div>
     <span class="sep"></span>
-    <button type="button" class="btn" data-b="close">Close</button>
+    <button type="button" class="btn" data-b="close">Schließen</button>
   </div>
 </div>
 <div id="confetti" aria-hidden="true"></div>
@@ -550,34 +528,34 @@ const stars = n => { let s = ''; for (let i = 0; i < 3; i++) s += i < n ? STAR_O
 
 /* ---------- content ---------- */
 const LETTERS = [
-  {ch:'ا', name:'Alif',  ar:'ألف'},
-  {ch:'ب', name:'Baa',   ar:'باء'},
-  {ch:'ت', name:'Taa',   ar:'تاء'},
-  {ch:'ث', name:'Thaa',  ar:'ثاء'},
-  {ch:'ج', name:'Jeem',  ar:'جيم'},
-  {ch:'ح', name:'Ḥaa',   ar:'حاء'},
-  {ch:'خ', name:'Khaa',  ar:'خاء'},
-  {ch:'د', name:'Daal',  ar:'دال'},
-  {ch:'ذ', name:'Dhaal', ar:'ذال'},
-  {ch:'ر', name:'Raa',   ar:'راء'},
-  {ch:'ز', name:'Zaay',  ar:'زاي'},
-  {ch:'س', name:'Seen',  ar:'سين'},
-  {ch:'ش', name:'Sheen', ar:'شين'},
-  {ch:'ص', name:'Ṣaad',  ar:'صاد'},
-  {ch:'ض', name:'Ḍaad',  ar:'ضاد'},
-  {ch:'ط', name:'Ṭaa',   ar:'طاء'},
-  {ch:'ظ', name:'Ẓaa',   ar:'ظاء'},
-  {ch:'ع', name:'Ayn',   ar:'عين'},
-  {ch:'غ', name:'Ghayn', ar:'غين'},
-  {ch:'ف', name:'Faa',   ar:'فاء'},
-  {ch:'ق', name:'Qaaf',  ar:'قاف'},
-  {ch:'ك', name:'Kaaf',  ar:'كاف'},
-  {ch:'ل', name:'Laam',  ar:'لام'},
-  {ch:'م', name:'Meem',  ar:'ميم'},
-  {ch:'ن', name:'Noon',  ar:'نون'},
-  {ch:'ه', name:'Haa',   ar:'هاء'},
-  {ch:'و', name:'Waaw',  ar:'واو'},
-  {ch:'ي', name:'Yaa',   ar:'ياء'}
+  {ch:'ا', name:'Alif', ar:'ألف'},
+  {ch:'ب', name:'Ba', ar:'باء'},
+  {ch:'ت', name:'Ta', ar:'تاء'},
+  {ch:'ث', name:'Tha', ar:'ثاء'},
+  {ch:'ج', name:'Dschim', ar:'جيم'},
+  {ch:'ح', name:'Ha (stark)', ar:'حاء'},
+  {ch:'خ', name:'Cha', ar:'خاء'},
+  {ch:'د', name:'Dal', ar:'دال'},
+  {ch:'ذ', name:'Dhal', ar:'ذال'},
+  {ch:'ر', name:'Ra', ar:'راء'},
+  {ch:'ز', name:'Zay', ar:'زاي'},
+  {ch:'س', name:'Sin', ar:'سين'},
+  {ch:'ش', name:'Schin', ar:'شين'},
+  {ch:'ص', name:'Sad', ar:'صاد'},
+  {ch:'ض', name:'Dad', ar:'ضاد'},
+  {ch:'ط', name:'Ta (schwer)', ar:'طاء'},
+  {ch:'ظ', name:'Za (schwer)', ar:'ظاء'},
+  {ch:'ع', name:'Ain', ar:'عين'},
+  {ch:'غ', name:'Ghain', ar:'غين'},
+  {ch:'ف', name:'Fa', ar:'فاء'},
+  {ch:'ق', name:'Qaf', ar:'قاف'},
+  {ch:'ك', name:'Kaf', ar:'كاف'},
+  {ch:'ل', name:'Lam', ar:'لام'},
+  {ch:'م', name:'Mim', ar:'ميم'},
+  {ch:'ن', name:'Nun', ar:'نون'},
+  {ch:'ه', name:'Ha (weich)', ar:'هاء'},
+  {ch:'و', name:'Waw', ar:'واو'},
+  {ch:'ي', name:'Ya', ar:'ياء'}
 ];
 const LOOK = ['بتثني','جحخ','دذ','رزو','سش','صض','طظ','عغ','فق','كل'];
 const lookGroup = L => LOOK.filter(g => g.indexOf(L.ch) >= 0)[0] || '';
@@ -586,10 +564,10 @@ const SETS = [
   {id:'g2', a:7,  b:14, label:'د – ص', ar:true},
   {id:'g3', a:14, b:21, label:'ض – ق', ar:true},
   {id:'g4', a:21, b:28, label:'ك – ي', ar:true},
-  {id:'all',a:0,  b:28, label:'All 28', ar:false}
+  {id:'all',a:0,  b:28, label:'Alle 28', ar:false}
 ];
-const LENS = [{id:'short',label:'Short'},{id:'normal',label:'Medium'},{id:'long',label:'Long'}];
-const LEVELS = [{icon:'🐣',label:'Starter'},{icon:'⭐',label:'Explorer'},{icon:'🚀',label:'Champion'}];
+const LENS = [{id:'short',label:'Kurz'},{id:'normal',label:'Mittel'},{id:'long',label:'Lang'}];
+const LEVELS = [{icon:'🐣',label:'Leicht'},{icon:'⭐',label:'Mittel'},{icon:'🚀',label:'Schwer'}];
 const COLORS = ['#F6B620','#35C9BC','#FF8094','#A99BFF','#6FD08C','#FF9F4A'];
 const AVATARS = ['🦊','🐼','🦁','🐸','🐙','🦄','🐯','🐨','🐵','🐰'];
 const BAL_COLORS = ['#FFC93C','#5ED6C9','#FF8FA0','#BDB0FF','#8EDC9F','#FFB26B','#8CC8FF'];
@@ -597,8 +575,8 @@ const BAL_COLORS = ['#FFC93C','#5ED6C9','#FF8FA0','#BDB0FF','#8EDC9F','#FFB26B',
 /* ---------- settings ---------- */
 const LS_KEY = 'huroof.settings.v1';
 const S = {
-  count: Math.min(window.innerWidth, window.innerHeight) < 600 ? 1 : 3,
-  players: [0,1,2].map(i => ({name:'', color:COLORS[i], avatar:AVATARS[i], level:1})),
+  count: Math.min(window.innerWidth, window.innerHeight) < 600 ? 1 : 4,
+  players: [0,1,2,3].map(i => ({name:'', color:COLORS[i], avatar:AVATARS[i], level:1})),
   set:'g1', length:'normal', muted:false
 };
 function save(){ try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) {} }
@@ -606,11 +584,12 @@ function load(){
   try {
     const d = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
     if (!d || typeof d !== 'object') return;
-    if ([1,2,3].indexOf(d.count) >= 0) S.count = d.count;
+    if ([1,2,3,4].indexOf(d.count) >= 0) S.count = d.count;
+    if (S.count === 3 && !(Array.isArray(d.players) && d.players.length > 3)) S.count = 4;   // settings saved before the fourth player existed
     if (SETS.some(s => s.id === d.set)) S.set = d.set;
     if (LENS.some(s => s.id === d.length)) S.length = d.length;
     S.muted = !!d.muted;
-    if (Array.isArray(d.players)) d.players.slice(0,3).forEach((p,i) => {
+    if (Array.isArray(d.players)) d.players.slice(0,4).forEach((p,i) => {
       if (!p || typeof p !== 'object') return;
       const q = S.players[i];
       if (typeof p.name === 'string') q.name = p.name.slice(0,10);
@@ -620,7 +599,7 @@ function load(){
     });
   } catch (e) {}
 }
-const pname = (p, i) => (p.name && p.name.trim()) || ('Player ' + (i + 1));
+const pname = (p, i) => (p.name && p.name.trim()) || ('Spieler ' + (i + 1));
 
 /* ---------- sound ---------- */
 let actx = null;
@@ -708,18 +687,18 @@ function stopClock(){ clock.gen++; clock.timers = []; clock.update = null; }
 function show(id){ ['home','game','podium','neu'].forEach(s => { $('#' + s).hidden = s !== id; }); }
 
 function renderHome(){
-  $('#count').innerHTML = [1,2,3].map(n => '<button type="button" data-n="' + n + '" class="' + (S.count === n ? 'on' : '') + '" aria-pressed="' + (S.count === n) + '">' + n + '</button>').join('');
+  $('#count').innerHTML = [1,2,3,4].map(n => '<button type="button" data-n="' + n + '" class="' + (S.count === n ? 'on' : '') + '" aria-pressed="' + (S.count === n) + '">' + n + '</button>').join('');
   const wrap = $('#pcards'); wrap.innerHTML = '';
   S.players.forEach((p, i) => {
     if (i >= S.count) return;
     const c = el('div', 'pcard'); c.style.setProperty('--pc', p.color);
     c.innerHTML =
-      '<button type="button" class="pc-av" data-act="av" data-i="' + i + '" aria-label="Change picture">' + p.avatar + '</button>' +
-      '<div class="pc-main"><input class="pc-name" data-i="' + i + '" maxlength="10" placeholder="Player ' + (i + 1) + '" aria-label="Player ' + (i + 1) + ' name" autocomplete="off">' +
-      '<div class="pc-lv" role="group" aria-label="Level">' +
+      '<button type="button" class="pc-av" data-act="av" data-i="' + i + '" aria-label="Bild ändern">' + p.avatar + '</button>' +
+      '<div class="pc-main"><input class="pc-name" data-i="' + i + '" maxlength="10" placeholder="Spieler ' + (i + 1) + '" aria-label="Name von Spieler ' + (i + 1) + '" autocomplete="off">' +
+      '<div class="pc-lv" role="group" aria-label="Stufe">' +
       LEVELS.map((l, k) => '<button type="button" data-act="lv" data-i="' + i + '" data-v="' + k + '" class="' + (p.level === k ? 'on' : '') + '" aria-pressed="' + (p.level === k) + '">' + l.icon + ' ' + l.label + '</button>').join('') +
       '</div></div>' +
-      '<button type="button" class="pc-col" data-act="col" data-i="' + i + '" aria-label="Change colour"></button>';
+      '<button type="button" class="pc-col" data-act="col" data-i="' + i + '" aria-label="Farbe ändern"></button>';
     $('.pc-name', c).value = p.name;
     wrap.appendChild(c);
   });
@@ -761,12 +740,12 @@ function startGame(id){
 }
 function begin(id){
   const def = GAMES[id], set = SETS.filter(s => s.id === S.set)[0];
-  G = { id:id, def:def, round:0, rounds:def.rounds[S.length], pool:LETTERS.slice(set.a, set.b), deck:[], L:null, lanes:[], time:0, timeMax:0, roundOver:false, firstDone:false };
+  G = { id:id, def:def, round:0, rounds:def.rounds[S.length], pool:def.pool || LETTERS.slice(set.a, set.b), deck:[], L:null, lanes:[], time:0, timeMax:0, roundOver:false, firstDone:false };
   show('game');
   $('#g-title').textContent = def.title;
   $('#g-say').hidden = !(def.speaks && canSpeak);
-  const wrap = $('#lanes'); wrap.innerHTML = '';
-  G.lanes = S.players.slice(0, S.count).map((p, i) => {
+  const wrap = $('#lanes'), count = def.count || S.count; wrap.innerHTML = ''; wrap.classList.toggle('n4', count === 4);
+  G.lanes = S.players.slice(0, count).map((p, i) => {
     const lane = el('div', 'lane'); lane.style.setProperty('--pc', p.color);
     lane.innerHTML = '<div class="lane-head"><span class="av">' + p.avatar + '</span><span class="nm"></span><span aria-hidden="true">' + LEVELS[p.level].icon + '</span><span class="sc">' + STAR + '<b>0</b></span></div><div class="lane-body"></div>';
     $('.nm', lane).textContent = pname(p, i);
@@ -935,8 +914,8 @@ function traceFinish(lane){
   const t = lane.t, r = traceStars(lane); t.active.clear();
   t.meter.forEach((sv, i) => sv.classList.toggle('on', i < r.s));
   t.tip.hidden = true; t.alpha = 1; t.fade = -1; traceDraw(lane);
-  let pts = r.s * 10, msg = r.s ? '+' + pts : 'Good try!';
-  if (r.s >= 2 && firstBonus()) { pts += 5; msg = 'First! +' + pts; }
+  let pts = r.s * 10, msg = r.s ? '+' + pts : 'Guter Versuch!';
+  if (r.s >= 2 && firstBonus()) { pts += 5; msg = 'Zuerst! +' + pts; }
   if (pts) addScore(lane, pts);
   if (r.s) sfx.good(); else sfx.bad();
   toast(lane, '<div class="big">' + stars(r.s) + '</div><div>' + msg + '</div>');
@@ -945,11 +924,11 @@ function traceFinish(lane){
 function traceSetup(lane){
   const lvl = lane.p.level;
   lane.body.innerHTML =
-    '<div class="tc-wrap"><canvas class="tc-cv"></canvas><div class="tc-tip" hidden>Don\'t forget the dots</div></div>' +
-    '<div class="tools"><div class="meter" aria-label="Stars earned">' + stars(0) + '</div><span class="sp"></span>' +
-    '<button type="button" class="ib sm" data-a="undo" aria-label="Undo">↩️</button>' +
-    '<button type="button" class="ib sm" data-a="clear" aria-label="Clear">🗑️</button>' +
-    '<button type="button" class="btn" data-a="done">Done</button></div>';
+    '<div class="tc-wrap"><canvas class="tc-cv"></canvas><div class="tc-tip" hidden>Vergiss die Punkte nicht</div></div>' +
+    '<div class="tools"><div class="meter" aria-label="Sterne">' + stars(0) + '</div><span class="sp"></span>' +
+    '<button type="button" class="ib sm" data-a="undo" aria-label="Zurück">↩️</button>' +
+    '<button type="button" class="ib sm" data-a="clear" aria-label="Löschen">🗑️</button>' +
+    '<button type="button" class="btn" data-a="done">Fertig</button></div>';
   const cv = $('.tc-cv', lane.body);
   const t = lane.t = { cv:cv, ctx:cv.getContext('2d'), strokes:[], active:new Map(), alpha:1, fade:lvl === 2 ? 3500 : -1, tip:$('.tc-tip', lane.body), meter:$$('.meter .st', lane.body) };
   traceSize(lane);
@@ -976,10 +955,10 @@ function traceSetup(lane){
   });
 }
 GAMES.trace = {
-  title:'Trace it', speaks:true, rounds:{short:3, normal:5, long:8},
+  title:'Nachschreiben', speaks:true, rounds:{short:3, normal:5, long:8},
   round(){
     const L = G.L = draw(); say(L);
-    setPrompt('Trace <span class="ar" lang="ar">' + L.ch + '</span> <b>' + L.name + '</b>');
+    setPrompt('Schreib <span class="ar" lang="ar">' + L.ch + '</span> <b>' + L.name + '</b>');
     G.time = G.timeMax = 45000;
     G.lanes.forEach(traceSetup);
   },
@@ -1043,10 +1022,10 @@ function popTarget(lane, reveal){
   lane.b.tg.innerHTML = reveal ? A + '<b>' + L.name + '</b>' : lvl === 0 ? A : '<b>' + L.name + '</b>';
 }
 GAMES.pop = {
-  title:'Balloon pop', speaks:true, rounds:{short:5, normal:8, long:12},
+  title:'Ballons', speaks:true, rounds:{short:5, normal:8, long:12},
   round(){
     const L = G.L = draw(); say(L);
-    setPrompt(canSpeak ? 'Listen, then pop the right letter' : 'Pop the right letter');
+    setPrompt(canSpeak ? 'Hör zu. Dann tipp auf den richtigen Buchstaben.' : 'Tipp auf den richtigen Buchstaben.');
     G.time = G.timeMax = 13000;
     G.lanes.forEach(lane => {
       if (!lane.b) {
@@ -1111,8 +1090,8 @@ function flipCard(lane, c){
     addScore(lane, 10); floatAt(lane, b.e, '+10'); sfx.good();
     if (m.got === m.n) {
       lane.done = true;
-      let pts = 10, msg = 'All pairs found!';
-      if (firstBonus()) { pts = 20; msg = 'First to finish!'; }
+      let pts = 10, msg = 'Alle Paare gefunden!';
+      if (firstBonus()) { pts = 20; msg = 'Zuerst fertig!'; }
       addScore(lane, pts);
       toast(lane, '<div class="big">🎉</div><div>' + msg + ' +' + pts + '</div>');
       allDone();
@@ -1123,9 +1102,9 @@ function flipCard(lane, c){
   }
 }
 GAMES.match = {
-  title:'Memory match', speaks:false, rounds:{short:1, normal:2, long:3},
+  title:'Memory', speaks:false, rounds:{short:1, normal:2, long:3},
   round(){
-    setPrompt('Find the matching pairs');
+    setPrompt('Finde die Paare.');
     const ls = shuffle(G.pool).slice(0, 6);
     G.time = G.timeMax = 100000;
     G.lanes.forEach(lane => {
@@ -1137,9 +1116,9 @@ GAMES.match = {
       const grid = $('.mm-grid', lane.body);
       lane.m = { grid:grid, n:n, count:cards.length, open:[], got:0, busy:false };
       cards.forEach(c => {
-        const e = el('button', 'mm-card'); e.type = 'button'; e.setAttribute('aria-label', 'Card');
+        const e = el('button', 'mm-card'); e.type = 'button'; e.setAttribute('aria-label', 'Karte');
         e.innerHTML = '<span class="mm-in"><span class="mm-back">' + STAR + '</span><span class="mm-front">' +
-          (c.k === 'l' ? '<span class="ar big" lang="ar">' + c.L.ch + '</span>' : '<span class="nmc">' + c.L.name + '</span>') +
+          (c.k === 'l' ? '<span class="ar big" lang="ar">' + c.L.ch + '</span>' : '<span class="nmc' + (c.L.name.length > 6 ? ' sm' : '') + '">' + c.L.name + '</span>') +
           '</span></span>';
         c.e = e; c.open = false; c.got = false;
         tap(e, () => flipCard(lane, c));
@@ -1166,8 +1145,8 @@ function placeTile(lane, slot, tile, free){
   addScore(lane, 10); floatAt(lane, slot.e, '+10'); sfx.good();
   if (lane.tr.slots.every(s => s.filled)) {
     lane.done = true;
-    let pts = 10, msg = 'All aboard!';
-    if (firstBonus()) { pts = 20; msg = 'First to finish!'; }
+    let pts = 10, msg = 'Alle einsteigen!';
+    if (firstBonus()) { pts = 20; msg = 'Zuerst fertig!'; }
     addScore(lane, pts); sfx.choo();
     lane.tr.train.classList.add('go');
     toast(lane, '<div class="big">🎉</div><div>' + msg + ' +' + pts + '</div>');
@@ -1209,9 +1188,9 @@ function makeTile(lane, L){
   return e;
 }
 GAMES.train = {
-  title:'Alphabet train', speaks:false, rounds:{short:2, normal:3, long:5},
+  title:'Buchstaben-Zug', speaks:false, rounds:{short:2, normal:3, long:5},
   round(){
-    setPrompt('Fill the wagons in order, starting next to the engine');
+    setPrompt('Füll die Wagen der Reihe nach. Fang bei der Lok an.');
     const s = Math.floor(Math.random() * (G.pool.length - 4)), seq5 = G.pool.slice(s, s + 5);
     G.time = G.timeMax = 80000;
     G.lanes.forEach(lane => {
@@ -1245,17 +1224,17 @@ function finish(){
   const rs = G.lanes.map(l => ({ p:l.p, i:l.i, score:l.score })).sort((a, b) => b.score - a.score);
   let rank = 0;
   rs.forEach((r, k) => { if (k === 0 || r.score < rs[k - 1].score) rank = k + 1; r.rank = rank; });
-  const order = rs.length === 3 ? [rs[1], rs[0], rs[2]] : rs;
+  const order = rs.length >= 3 ? [rs[1], rs[0]].concat(rs.slice(2)) : rs;
   const stand = $('#p-stand'); stand.innerHTML = '';
   order.forEach(r => {
     const d = el('div', 'pod r' + r.rank); d.style.setProperty('--pc', r.p.color);
     d.innerHTML = (r.rank === 1 && rs.length > 1 ? '<div class="pod-crown" aria-hidden="true">👑</div>' : '') + '<div class="pod-av">' + r.p.avatar + '</div><div class="pod-nm"></div>' +
-      '<div class="pod-blk"><span class="pod-sc">' + STAR + '<span>' + r.score + '</span></span>' + (rs.length > 1 ? '<span class="pod-rk">' + ['1st','2nd','3rd'][r.rank - 1] + ' place</span>' : '') + '</div>';
+      '<div class="pod-blk"><span class="pod-sc">' + STAR + '<span>' + r.score + '</span></span>' + (rs.length > 1 ? '<span class="pod-rk">' + r.rank + '. Platz</span>' : '') + '</div>';
     $('.pod-nm', d).textContent = pname(r.p, r.i);
     stand.appendChild(d);
   });
   const top = rs.filter(r => r.rank === 1);
-  $('#p-title').textContent = rs.length === 1 ? 'Great work!' : top.length > 1 ? 'It is a tie!' : pname(top[0].p, top[0].i) + ' wins!';
+  $('#p-title').textContent = rs.length === 1 ? 'Super gemacht!' : top.length > 1 ? 'Unentschieden!' : pname(top[0].p, top[0].i) + ' gewinnt!';
   show('podium'); sfx.win(); confetti();
 }
 function confetti(){
@@ -1277,7 +1256,7 @@ function disarm(){ const b = $('#g-home'); clearTimeout(armT); b.classList.remov
 $('#g-home').addEventListener('click', () => {
   const b = $('#g-home');
   if (b.classList.contains('arm')) { disarm(); quitGame(); return; }
-  b.classList.add('arm'); b.textContent = 'Leave game?';
+  b.classList.add('arm'); b.textContent = 'Spiel verlassen?';
   armT = setTimeout(disarm, 2600);
 });
 $('#g-say').addEventListener('click', () => { if (G) say(G.L); });
@@ -1299,8 +1278,8 @@ const B = { strokes:[], active:new Map(), pen:0, size:1, erase:false, solid:fals
 B.ctx = B.cv.getContext('2d');
 const penColor = c => c === 'ink' ? cssVar('--ink') : c;
 function boardUI(){
-  $('#bd-pens').innerHTML = PENS.map((c, i) => '<button type="button" class="pen ' + (!B.erase && B.pen === i ? 'on' : '') + '" data-pen="' + i + '" style="--pcol:' + (c === 'ink' ? 'var(--ink)' : c) + '" aria-label="Pen colour ' + (i + 1) + '"></button>').join('');
-  $('#bd-sizes').innerHTML = SIZES.map((s, i) => '<button type="button" class="sz ' + (B.size === i ? 'on' : '') + '" data-size="' + i + '" style="--d:' + (0.3 + i * 0.35) + 'em" aria-label="Pen size ' + (i + 1) + '"></button>').join('');
+  $('#bd-pens').innerHTML = PENS.map((c, i) => '<button type="button" class="pen ' + (!B.erase && B.pen === i ? 'on' : '') + '" data-pen="' + i + '" style="--pcol:' + (c === 'ink' ? 'var(--ink)' : c) + '" aria-label="Stiftfarbe ' + (i + 1) + '"></button>').join('');
+  $('#bd-sizes').innerHTML = SIZES.map((s, i) => '<button type="button" class="sz ' + (B.size === i ? 'on' : '') + '" data-size="' + i + '" style="--d:' + (0.3 + i * 0.35) + 'em" aria-label="Stiftgröße ' + (i + 1) + '"></button>').join('');
   $('[data-b="erase"]').classList.toggle('on', B.erase);
   $('[data-b="solid"]').classList.toggle('on', B.solid);
   $('[data-b="guide"]').classList.toggle('on', B.guide);
@@ -1367,7 +1346,7 @@ const NEU = (function(){
      twin:{ch:'د', name:'Dal', a:'schwer', b:'leicht'}, look:['ص','ط','ظ','د'],
      words:[['ضفدع','Frosch','difda'],['أخضر','grün','achdar'],['أبيض','weiß','abjad']]},
     {ch:'ط', name:'Ta (schwer)', ar:'طاء', hard:true, sound:'Ein schweres T.', tip:'Sag T, aber dunkel und kräftig.',
-     twin:{ch:'ت', name:'Ta (leicht)', a:'schwer', b:'leicht'}, look:['ظ','ت','ض','ص'],
+     twin:{ch:'ت', name:'Ta', a:'schwer', b:'leicht'}, look:['ظ','ت','ض','ص'],
      words:[['طفل','Kind','tifl'],['مطر','Regen','matar'],['قط','Kater','qitt']]},
     {ch:'ظ', name:'Za (schwer)', ar:'ظاء', hard:true, sound:'Wie das englische „th“ in „this“. Aber schwer.', tip:'Die Zungenspitze kommt zwischen die Zähne.',
      twin:{ch:'ذ', name:'Dhal', a:'schwer', b:'leicht'}, look:['ط','ذ','ض','ز'],
@@ -1421,12 +1400,6 @@ const NEU = (function(){
       {a:'ف', an:'Fa', at:'ein Punkt', b:'ق', bn:'Qaf', bt:'zwei Punkte', note:'Zähl die Punkte!'}
     ]
   };
-  const KINDS = {
-    find:['Finde den Buchstaben','Du liest den Namen. Du tippst auf den Buchstaben.'],
-    form:['Formen-Jagd','Der Buchstabe steht in einem Wort. Erkennst du ihn?'],
-    word:['Wort-Jagd','Welcher Buchstabe steckt im Wort?'],
-    say:['Sag den Laut','Du sprichst. Die Lehrerin oder der Lehrer entscheidet.']
-  };
   const POS = {anfang:'am Anfang', mitte:'in der Mitte', ende:'am Ende', rechts:'nach einem anderen Buchstaben'};
 
   /* helpers */
@@ -1447,13 +1420,8 @@ const NEU = (function(){
   const bd = (html, size) => '<div class="dy-bd ' + size + '">' + A(html, 'dy-ink') + '</div>';
   const speak = t => say({ar:t});
 
-  /* state: no settings, every card starts at once with four players */
-  const PLAYERS = [0,1,2,3].map(i => ({name:'Spieler ' + (i + 1), avatar:AVATARS[i], color:COLORS[i]}));
-  const ROUNDS = 4;
-  const TABS = [['buchstaben','Buchstaben'],['paare','Paare'],['karten','Karten']];
-  const N = {view:'lernen', tab:'buchstaben', idx:0, hide:false, cards:null, cardAt:0, cardOpen:false, game:null};
-
-  /* learn views */
+  /* learn views (no points) */
+  const N = {tab:'buchstaben', idx:0, hide:false, cards:null, cardAt:0, cardOpen:false};
   function vBuchstaben(){
     const l = DL[N.idx] || DL[0], f = forms(l.ch);
     const strip = '<div class="dy-strip" dir="rtl">' + DL.map((x, i) =>
@@ -1494,118 +1462,17 @@ const NEU = (function(){
       '<div class="dy-reveal">' + (N.cardOpen ? '<b>' + esc(l.name) + '</b><span>' + esc(l.sound) + '</span>' : '<span class="dy-lede" style="margin:0 auto">Wie heißt dieser Buchstabe? Wie klingt er?</span>') + '</div>' +
       '<div class="dy-row c"><button type="button" class="btn xl" data-act="' + act + '">' + (N.cardOpen ? (last ? 'Neu mischen' : 'Nächste Karte') : 'Zeigen') + '</button></div></div>';
   }
-  const vLernen = () => N.tab === 'paare' ? vPaare() : N.tab === 'karten' ? vKarten() : vBuchstaben();
-
-  /* play: engine */
-  function newGame(kind){
-    const n = PLAYERS.length, total = n * ROUNDS, pool = DL.map(l => l.ch);
-    let deck = [];
-    while (deck.length < total) { const d = shuffle(pool); if (deck.length && d[0] === deck[deck.length - 1]) d.push(d.shift()); deck = deck.concat(d); }
-    N.game = {kind:kind, n:n, total:total, turn:0, deck:deck.slice(0, total), q:null, ans:null, missed:[], done:false, tip:false,
-      players:PLAYERS.map(p => ({name:p.name, avatar:p.avatar, color:p.color, score:0}))};
-    makeQ();
-  }
-  function makeQ(){
-    const g = N.game, l = BY[g.deck[g.turn]], kind = g.kind, q = {kind:kind, ch:l.ch};
-    g.ans = null; g.tip = false;
-    if (kind !== 'say') {
-      let word = null;
-      if (kind === 'word') { word = pick(WORDS.filter(w => w[0].indexOf(l.ch) >= 0)); q.word = word; }
-      if (kind === 'form') { q.pos = l.ch === 'و' ? 'rechts' : pick(['anfang','mitte','ende']); q.glyph = forms(l.ch)[q.pos === 'rechts' ? 'ende' : q.pos]; }
-      /* four answers: the right one, one look-alike, two others */
-      const bad = c => c === l.ch || (word && norm(word[0]).indexOf(c) >= 0);
-      const near = shuffle(l.look.filter(c => !bad(c))).slice(0, 1);
-      const rest = shuffle(DL.map(x => x.ch).filter(c => !bad(c) && l.look.indexOf(c) < 0));
-      q.opts = shuffle([l.ch].concat(near, rest.slice(0, 3 - near.length)));
-    }
-    g.q = q;
-  }
-  function answer(ok, choice){
-    const g = N.game; if (g.ans) return;
-    g.ans = {ok:ok, choice:choice || null};
-    if (ok) { g.players[g.turn % g.n].score++; sfx.good(); }
-    else { if (g.missed.indexOf(g.q.ch) < 0) g.missed.push(g.q.ch); sfx.bad(); }
-  }
-  function nextQ(){
-    const g = N.game; if (!g.ans) return;
-    g.turn++;
-    if (g.turn >= g.total) { g.done = true; g.q = null; sfx.win(); confetti(); } else makeQ();
-  }
-
-  /* play: views */
-  function vGame(){
-    const g = N.game; if (g.done) return vEnd();
-    const q = g.q, l = BY[q.ch], cur = g.turn % g.n, p = g.players[cur], a = g.ans;
-    const scores = '<div class="dy-scores" style="--n:' + g.n + '">' + g.players.map((x, i) =>
-      '<div class="dy-sc' + (i === cur ? ' on' : '') + '" style="--pc:' + x.color + '"' + (i === cur ? ' aria-current="true"' : '') + '><span class="av" aria-hidden="true">' + x.avatar + '</span><span class="nm">' + esc(x.name) + '</span><span class="sc">' + STAR + x.score + '</span></div>').join('') + '</div>';
-    let prompt, stim, body;
-    if (q.kind === 'find') { prompt = 'Finde diesen Buchstaben:'; stim = '<div class="dy-nm">' + esc(l.name) + '</div><p class="dy-cap">' + esc(l.sound) + '</p>'; }
-    else if (q.kind === 'form') { prompt = 'Welcher Buchstabe ist das?'; stim = bd(q.glyph, 'lg') + '<p class="dy-cap">So sieht er ' + POS[q.pos] + ' aus.</p>'; }
-    else if (q.kind === 'word') { prompt = 'Welcher Buchstabe steckt im Wort?'; stim = bd(a ? hl(q.word[0], q.ch) : q.word[0], 'lg') + '<p class="dy-cap"><b>' + esc(q.word[1]) + '</b> ' + esc(q.word[2]) + '</p>'; }
-    else { prompt = 'Sag den Laut!'; stim = bd(l.ch, 'lg') + (g.tip || a ? '<p class="dy-cap">' + esc(l.sound) + ' ' + esc(l.tip) + '</p>' : ''); }
-    if (q.kind === 'say') {
-      body = a ? '' : '<div class="dy-row sp"><button type="button" class="btn alt" data-act="tip"' + (g.tip ? ' disabled' : '') + '>Tipp</button>' +
-        '<div class="dy-row"><button type="button" class="btn alt xl" data-act="judge" data-v="0">Noch nicht</button><button type="button" class="btn xl" data-act="judge" data-v="1">Richtig</button></div></div>';
-    } else {
-      body = '<div class="dy-opts o' + q.opts.length + '" style="--o:' + q.opts.length + '">' + q.opts.map(c => {
-        let cls = '', mark = '';
-        if (a) { if (c === q.ch) { cls = ' right'; mark = '<em aria-hidden="true">✓</em>'; } else if (c === a.choice) { cls = ' wrong'; mark = '<em aria-hidden="true">✗</em>'; } }
-        return '<button type="button" class="dy-opt ar' + cls + '" data-act="pick" data-v="' + c + '" lang="ar"' + (a ? ' disabled' : '') + '>' + mark + c + '</button>';
-      }).join('') + '</div>';
-    }
-    const res = a ? '<div class="dy-res ' + (a.ok ? 'ok' : 'no') + '" role="status"><span class="dy-res-ic" aria-hidden="true">' + (a.ok ? '✓' : '✗') + '</span>' +
-      '<span class="dy-res-tx"><b>' + (a.ok ? 'Richtig!' : 'Noch nicht.') + '</b><span>' + A(l.ch) + ' ' + esc(l.name) + '</span></span>' +
-      '<button type="button" class="btn xl" id="dy-weiter" data-act="next">' + (g.turn === g.total - 1 ? 'Ergebnis' : 'Weiter') + '</button></div>' : '';
-    return scores + '<div class="panel dy-stage" style="--pc:' + p.color + '">' +
-      '<div class="dy-turn"><b>' + p.avatar + ' ' + esc(p.name) + '</b><span>' + prompt + '</span></div>' +
-      '<div class="dy-stim">' + stim + '</div>' + body + res + '</div>';
-  }
-  function vEnd(){
-    const g = N.game, ord = g.players.map((p, i) => ({p:p, i:i})).sort((x, y) => y.p.score - x.p.score);
-    let rank = 0, prev = null;
-    ord.forEach((o, k) => { if (o.p.score !== prev) { rank = k + 1; prev = o.p.score; } o.rank = rank; });
-    const top = ord.filter(o => o.rank === 1);
-    const title = top.length === 1 ? top[0].p.avatar + ' ' + esc(top[0].p.name) + ' gewinnt!' : 'Unentschieden!';
-    const list = ord.map(o =>
-      '<li class="r' + o.rank + '" style="--pc:' + o.p.color + '"><span class="pos">' + o.rank + '.</span><span class="av" aria-hidden="true">' + o.p.avatar + '</span><span class="nm">' + esc(o.p.name) + '</span><span class="sc">' + STAR + o.p.score + '</span></li>').join('');
-    const miss = g.missed.length ? '<div class="dy-miss"><span class="dy-lede">Das üben wir noch:</span><div class="dy-strip" dir="rtl">' + g.missed.map(c =>
-        '<button type="button" class="dy-lt ar" data-act="practice" data-v="' + c + '" lang="ar" aria-label="' + esc(BY[c].name) + '">' + c + '</button>').join('') + '</div></div>'
-      : '<p class="dy-lede" style="margin:0 auto">Alles richtig. Super!</p>';
-    return '<h1 class="dy-win">' + title + '</h1><ol class="dy-rank">' + list + '</ol>' + miss +
-      '<div class="dy-row c"><button type="button" class="btn xl" data-act="start">Nochmal</button><button type="button" class="btn alt xl" data-act="home">Zum Start</button></div>';
-  }
-
-  /* render + events */
-  const root = $('#neu'), V = $('#n-view'), homeBtn = $('#n-home'), tabsEl = $('#n-tabs'), roundEl = $('#n-round');
-  let armT2 = 0;
-  function disarm2(){ clearTimeout(armT2); homeBtn.classList.remove('arm'); homeBtn.textContent = '🏠'; }
+  const root = $('#neu'), V = $('#n-view'), tabsEl = $('#n-tabs');
   function render(){
-    const g = N.game, play = N.view === 'spielen' && !!g, live = play && !g.done;
-    $('#n-title').textContent = play ? KINDS[g.kind][0] : 'Lernen';
-    tabsEl.hidden = play;
     $$('button', tabsEl).forEach(b => { const on = b.getAttribute('data-v') === N.tab; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
-    roundEl.hidden = !live;
-    if (live) roundEl.textContent = (g.turn + 1) + ' / ' + g.total;
-    V.innerHTML = '<div class="dy">' + (play ? vGame() : vLernen()) + '</div>';
+    V.innerHTML = '<div class="dy">' + (N.tab === 'paare' ? vPaare() : N.tab === 'karten' ? vKarten() : vBuchstaben()) + '</div>';
   }
-  function open(what){
-    disarm2(); $('#confetti').innerHTML = '';
-    if (what === 'lernen') { N.view = 'lernen'; N.game = null; }
-    else { audio(); newGame(what); N.view = 'spielen'; }
-    show('neu'); render(); V.scrollTop = 0;
-  }
-  function leave(){ disarm2(); try { window.speechSynthesis.cancel(); } catch (e) {} $('#confetti').innerHTML = ''; N.game = null; show('home'); }
-  homeBtn.addEventListener('click', () => {
-    const running = N.view === 'spielen' && N.game && !N.game.done;
-    if (!running || homeBtn.classList.contains('arm')) { leave(); return; }
-    homeBtn.classList.add('arm'); homeBtn.textContent = 'Spiel verlassen?';
-    armT2 = setTimeout(disarm2, 2600);
-  });
+  function open(){ show('neu'); render(); V.scrollTop = 0; }
+  $('#n-home').addEventListener('click', () => { try { window.speechSynthesis.cancel(); } catch (e) {} show('home'); });
   root.addEventListener('click', e => {
     const b = e.target.closest('[data-act]'); if (!b || b.disabled) return;
-    const act = b.getAttribute('data-act'), v = b.getAttribute('data-v'), g = N.game;
-    let top = false;
-    if (act === 'tab') { N.tab = v; top = true; }
+    const act = b.getAttribute('data-act'), v = b.getAttribute('data-v');
+    if (act === 'tab') { N.tab = v; }
     else if (act === 'go') { N.idx = +v; }
     else if (act === 'step') { N.idx = clamp(N.idx + (+v), 0, DL.length - 1); }
     else if (act === 'hide') { N.hide = !N.hide; }
@@ -1613,34 +1480,91 @@ const NEU = (function(){
     else if (act === 'card') { if (N.cardAt >= N.cards.length - 1) dealCards(); else { N.cardAt++; N.cardOpen = false; } }
     else if (act === 'speak') { speak(v); return; }
     else if (act === 'write') { B.gi = Math.max(0, LETTERS.findIndex(x => x.ch === v)); B.guide = true; B.solid = true; openBoard(); return; }
-    else if (act === 'start') { $('#confetti').innerHTML = ''; newGame(g.kind); top = true; }
-    else if (act === 'home') { leave(); return; }
-    else if (act === 'pick') { answer(v === g.q.ch, v); }
-    else if (act === 'judge') { answer(v === '1'); }
-    else if (act === 'tip') { g.tip = true; }
-    else if (act === 'next') { nextQ(); top = true; }
-    else if (act === 'practice') { $('#confetti').innerHTML = ''; N.game = null; N.idx = DL.indexOf(BY[v]); N.tab = 'buchstaben'; N.view = 'lernen'; top = true; }
     else return;
     render();
-    if (top) V.scrollTop = 0;
-    const w = $('#dy-weiter'); if (w && (act === 'pick' || act === 'judge')) w.focus();
+    if (act === 'tab') V.scrollTop = 0;
   });
   document.addEventListener('keydown', e => {
     if (root.hidden || !$('#board').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
-    const g = N.game;
-    if (N.view === 'spielen' && g && !g.done) {
-      if (!g.ans && g.q.opts && /^[1-4]$/.test(e.key)) {
-        const c = g.q.opts[+e.key - 1];
-        if (c) { answer(c === g.q.ch, c); render(); const w = $('#dy-weiter'); if (w) w.focus(); }
-      }
-    } else if (N.view === 'lernen' && N.tab === 'buchstaben' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+    if (N.tab === 'buchstaben' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
       /* the alphabet runs right to left: the left arrow goes to the next letter */
       N.idx = clamp(N.idx + (e.key === 'ArrowLeft' ? 1 : -1), 0, DL.length - 1); render();
     }
   });
-  return {open:open, state:() => N, letters:DL, where:where};
+
+  /* quiz games: four lanes, everyone answers at the same time */
+  const QZ_TIME = {find:15000, name:15000, form:15000, word:18000};
+  const QZ_PROMPT = {find:'Lies den Namen. Tipp auf den Buchstaben.', name:'Wie heißt dieser Buchstabe?', form:'Welcher Buchstabe ist das?', word:'Welcher Buchstabe steckt im Wort?'};
+  function quizOpts(l, lvl, word, own){
+    /* four answers; higher levels get more look-alikes */
+    const bad = c => c === l.ch || (word && norm(word[0]).indexOf(c) >= 0);
+    const near = shuffle(l.look.filter(c => !bad(c) && (!own || BY[c]))).slice(0, lvl === 0 ? 0 : lvl === 1 ? 1 : 3);
+    const rest = shuffle(DL.map(x => x.ch).filter(c => !bad(c) && l.look.indexOf(c) < 0));
+    return shuffle([l.ch].concat(near, rest.slice(0, 3 - near.length)));
+  }
+  function quizSize(lane){
+    const w = lane.body.clientWidth, h = lane.body.clientHeight;
+    lane.body.style.setProperty('--qu', clamp(Math.min(w, h * 0.62), 110, 520) + 'px');
+  }
+  function quizStim(){
+    const L = G.L, k = G.id, q = G.q;
+    if (k === 'find') return '<b class="qz-name">' + esc(L.name) + '</b><span class="qz-cap">' + esc(L.sound) + '</span>';
+    if (k === 'name') return A(L.ch, 'qz-big');
+    if (k === 'form') return A(q.glyph, 'qz-big') + '<span class="qz-cap">' + POS[q.pos] + '</span>';
+    return A(q.word[0], 'qz-word') + '<span class="qz-cap"><b>' + esc(q.word[1]) + '</b> ' + esc(q.word[2]) + '</span>';
+  }
+  function quizResult(lane, state, label){
+    const L = G.L, q = G.q, word = G.id === 'word';
+    lane.qz.stim.className = 'qz-stim ' + state;
+    lane.qz.stim.innerHTML = '<span class="qz-ic" aria-hidden="true">' + (state === 'ok' ? '✓' : state === 'no' ? '✗' : '⏰') + '</span>' +
+      A(word ? hl(q.word[0], L.ch) : L.ch, word ? 'qz-word' : 'qz-big') + '<b class="qz-rn">' + esc(L.name) + '</b>' + (label ? '<span class="qz-pts">' + label + '</span>' : '');
+    lane.qz.btns.forEach(b => { b.e.disabled = true; if (b.c === L.ch) b.e.classList.add('right'); });
+  }
+  function quizPick(lane, b){
+    if (lane.done || clock.paused || G.roundOver) return;
+    lane.done = true;
+    if (b.c === G.L.ch) {
+      let pts = 10, label = '+10';
+      if (firstBonus()) { pts = 15; label = 'Zuerst! +15'; }
+      addScore(lane, pts); sfx.good(); quizResult(lane, 'ok', label);
+    } else { b.e.classList.add('wrong'); sfx.bad(); quizResult(lane, 'no', 'Noch nicht'); }
+    if (G.lanes.every(l => l.done)) endRound(2200);
+  }
+  function quizRound(){
+    const L = G.L = draw(), k = G.id, q = G.q = {};
+    if (k === 'word') q.word = pick(WORDS.filter(w => w[0].indexOf(L.ch) >= 0));
+    if (k === 'form') { q.pos = L.ch === 'و' ? 'rechts' : pick(['anfang','mitte','ende']); q.glyph = forms(L.ch)[q.pos === 'rechts' ? 'ende' : q.pos]; }
+    if (k === 'find') say(L);
+    setPrompt(QZ_PROMPT[k]);
+    G.time = G.timeMax = QZ_TIME[k];
+    G.lanes.forEach(lane => {
+      lane.body.innerHTML = '<div class="qz"><div class="qz-stim"></div><div class="qz-opts"></div></div>';
+      const stim = $('.qz-stim', lane.body), box = $('.qz-opts', lane.body);
+      stim.innerHTML = quizStim();
+      const btns = quizOpts(L, lane.p.level, q.word, k === 'name').map(c => {
+        const e = el('button', 'qz-opt' + (k === 'name' ? ' txt' : ' ar'), k === 'name' ? esc(BY[c].name) : c);
+        e.type = 'button'; if (k !== 'name') e.setAttribute('lang', 'ar');
+        const b = {e:e, c:c}; tap(e, () => quizPick(lane, b)); box.appendChild(e); return b;
+      });
+      lane.qz = {stim:stim, btns:btns};
+      quizSize(lane);
+    });
+  }
+  const quizGame = (title, speaks) => ({
+    title:title, speaks:speaks, count:4, pool:DL, rounds:{short:7, normal:14, long:21},
+    round:quizRound,
+    timeUp(){ G.lanes.forEach(l => { if (!l.done) { l.done = true; quizResult(l, 'late', ''); } }); endRound(2200); },
+    resize(){ G.lanes.forEach(l => { if (l.qz) quizSize(l); }); }
+  });
+  GAMES.find = quizGame('Finde den Buchstaben', true);
+  GAMES.name = quizGame('Wie heißt er?', false);
+  GAMES.form = quizGame('Formen-Jagd', false);
+  GAMES.word = quizGame('Wort-Jagd', false);
+
+  return {open:open, letters:DL, where:where};
 })();
-$$('[data-neu]').forEach(b => b.addEventListener('click', () => NEU.open(b.getAttribute('data-neu'))));
+$$('[data-neu]').forEach(b => b.addEventListener('click', () => NEU.open()));
+try { document.documentElement.lang = 'de'; } catch (e) {}
 
 /* ---------- global ---------- */
 let rzT = 0;
