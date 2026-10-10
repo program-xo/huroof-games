@@ -235,13 +235,16 @@ h2{font-size:1.15em}
 
 /* home: new section + closed old section */
 .new-sec{flex:1 0 auto;display:flex;flex-direction:column;gap:var(--gap)}
-.sec-h{display:flex;align-items:center;flex-wrap:wrap;gap:.3em .6em}
-.sec-h p{margin:0;color:var(--muted);font-weight:500}
+.sec-h{display:flex;align-items:baseline;flex-wrap:wrap;gap:.2em .6em}
+.sec-h p{margin:0;color:var(--muted);font-weight:500;font-size:.9em}
 .tag-new{flex:0 0 auto;background:var(--pom);color:var(--on);border:var(--bw) solid var(--line);border-radius:999px;box-shadow:0 2px 0 var(--line);padding:0 .7em;font-weight:800;font-size:.9em}
-.new-cards{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:var(--gap)}
-.new-cards .gcard{position:relative;min-height:8em}
-.new-cards .g-desc{max-width:30ch}
-.new-cards .tag-new{position:absolute;top:.7em;left:.8em}
+.new-cards{flex:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:var(--gap)}
+.new-cards .gcard{min-height:7.5em}
+.new-cards .g-art{font-size:clamp(2.6em,10vmin,6em)}
+.new-cards .gcard.wide{grid-row:span 2}
+.new-cards .gcard.wide .g-art{font-size:clamp(4em,22vmin,13em)}
+.new-cards .gcard.wide .g-name{font-size:clamp(1.8em,5.5vmin,3.2em)}
+.new-cards .gcard.wide .g-desc{font-size:1.05em;max-width:26ch}
 .old-sec{flex:0 0 auto}
 .old-sec summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.6em;font-weight:800;font-size:1.15em;background:var(--card);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);padding:.5em .9em}
 .old-sec summary::-webkit-details-marker{display:none}
@@ -250,58 +253,63 @@ h2{font-size:1.15em}
 .old-sec summary span{margin-left:auto;color:var(--muted);font-weight:500;font-size:.8em}
 .old-sec .home-grid{margin-top:var(--gap)}
 @media (max-width:820px),(orientation:portrait){
-  .new-cards{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  .new-cards{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:none;grid-auto-rows:auto}
+  .new-cards .gcard.wide{grid-row:auto;grid-column:span 2}
 }
 
 /* new mode: Dad bis Ya */
 #neu .gbar{flex-wrap:wrap}
-#n-title{font-weight:800;font-size:1.2em;overflow:hidden;text-overflow:ellipsis}
+#n-title{font-weight:800;font-size:1.2em;white-space:nowrap}
+.dy-fill{flex:1}
+#n-round{font-weight:800;background:var(--bg2);border-radius:999px;padding:.15em .8em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dy-seg{display:flex;gap:.35em}
 .dy-seg button{font-weight:800;background:var(--bg);border:var(--bw) solid var(--line);border-radius:999px;padding:.15em 1em;min-height:2.3em}
 .dy-seg button.on{background:var(--blue);color:#fff}
 #n-home.arm{width:auto;padding:0 .8em;background:var(--pom);color:var(--on);font-weight:700}
-#n-view{flex:1;min-height:0;overflow-y:auto;padding:var(--gap) clamp(16px,2.4vw,40px) calc(var(--gap)*2.5)}
-.dy{display:flex;flex-direction:column;gap:calc(var(--gap)*1.3);max-width:62em;margin:0 auto}
+#n-view{flex:1;min-height:0;overflow-y:auto;padding:calc(var(--gap)*1.2) clamp(16px,2.4vw,40px) calc(var(--gap)*2.5)}
+.dy{display:flex;flex-direction:column;gap:calc(var(--gap)*1.4);max-width:66em;margin:0 auto}
 .dy p{margin:0}
-.dy h1{font-size:1.7em}
-.dy h3{margin:0;font-size:1em;font-weight:800}
-.dy-head{display:flex;flex-direction:column;gap:.2em}
-.dy-lede{color:var(--muted);max-width:60ch}
 .dy-row{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
 .dy-row.sp{justify-content:space-between}
-.dy-tabs .chip{font-size:1.1em;padding:.25em 1.1em}
-.dy-eye{font-size:.8em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dy-row.c{justify-content:center}
+.dy-lede{color:var(--muted);max-width:60ch}
+.dy-eye{font-size:.9em;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
 .dy-stack{display:flex;flex-direction:column;gap:.6em}
 .dy-hint{color:var(--muted);font-size:.9em}
-.dy .btn.xl{font-size:1.3em;padding:.45em 1.4em}
-.dy .btn:disabled{opacity:.4;cursor:default}
+.dy .btn.xl{font-size:1.4em;padding:.45em 1.5em}
+.dy .btn:disabled{opacity:.35;cursor:default}
 
 /* letter boards */
-.dy-bd{background:var(--card);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);overflow:hidden;padding:.1em .5em;min-width:0}
-.dy-ink{display:block;text-align:center;line-height:1.7;color:var(--ink)}
-.dy-bd.xl .dy-ink{font-size:clamp(5em,24vmin,10em)}
-.dy-bd.lg .dy-ink{font-size:clamp(3.6em,15vmin,6.5em)}
-.dy-bd.md .dy-ink{font-size:2.7em}
-.dy-bd.pr .dy-ink{font-size:3.3em}
+.dy-bd{background:var(--card);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);overflow:hidden;padding:0 .4em;min-width:0}
+.dy-ink{display:block;text-align:center;line-height:1.65;color:var(--ink)}
+.dy-bd.xxl .dy-ink{font-size:clamp(7em,36vmin,16em)}
+.dy-bd.xl .dy-ink{font-size:clamp(6em,29vmin,13em)}
+.dy-bd.lg .dy-ink{font-size:clamp(4.5em,18vmin,8.5em)}
+.dy-bd.md .dy-ink{font-size:2.9em}
+.dy-bd.pr .dy-ink{font-size:4em}
 .dy-hl{color:var(--hl)}
 
 /* learn */
 .dy-strip{display:flex;flex-wrap:wrap;gap:.4em}
 .dy-lt{width:2.1em;height:2.2em;font-size:1.3em;background:var(--card);border:var(--bw) solid var(--line);border-radius:.45em;box-shadow:0 3px 0 var(--line);padding:0 0 .25em;line-height:1}
 .dy-lt.on{background:var(--saffron);color:var(--on)}
-.dy-lcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:calc(var(--gap)*1.5);align-items:center}
-.dy-info{display:flex;flex-direction:column;gap:.45em;min-width:0}
-.dy-info h2{font-size:2.6em}
-.dy-sound{font-size:1.3em;font-weight:700}
-.dy-twin{display:flex;flex-wrap:wrap;align-items:center;gap:.3em 1em;border-top:var(--bw) dashed var(--bg2);padding-top:.4em}
-.dy-twin span{display:flex;align-items:center;gap:.45em}
-.dy-twin b{font-size:2em;line-height:1.3}
+.dy-lcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(var(--gap)*2);align-items:center}
+.dy-info{display:flex;flex-direction:column;gap:.5em;min-width:0}
+.dy-info h1{font-size:clamp(2.6em,9vmin,4.6em)}
+.dy-sound{font-size:1.5em;font-weight:700;line-height:1.2}
+.dy-tip{color:var(--muted)}
+.dy-twin{display:flex;flex-wrap:wrap;align-items:center;gap:.1em .5em;color:var(--muted)}
+.dy-twin .ar{font-size:1.9em;line-height:1.2;color:var(--ink)}
+.dy-twin .dy-hl{color:var(--hl)}
+.dy-nav{margin-top:.4em}
+.dy-nav .btn{flex:1;font-size:1.25em}
 .dy-g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
 .dy-g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
-.dy-tile{display:flex;flex-direction:column;gap:.35em;min-width:0;background:none;border:0;padding:0;text-align:inherit}
+.dy-tile{display:flex;flex-direction:column;gap:.3em;min-width:0;background:none;border:0;padding:0;text-align:inherit}
+.dy-tile .dy-bd{box-shadow:none}
 .dy-cap{font-size:.9em;color:var(--muted);text-align:center}
-.dy-cap b{display:block;color:var(--ink);font-size:1.15em}
-.dy-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
+.dy-cap b{color:var(--ink);font-size:1.15em}
+.dy-pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:var(--gap)}
 .dy-pair{display:flex;flex-direction:column;gap:.4em}
 .dy-two{display:grid;grid-template-columns:1fr 1fr;gap:.5em}
 .dy-side{display:flex;flex-direction:column;gap:.1em;text-align:center;min-width:0}
@@ -309,59 +317,61 @@ h2{font-size:1.15em}
 .dy-side b{font-weight:800}
 .dy-side i{font-style:normal;font-size:.9em;color:var(--muted)}
 .dy-hide .dy-side b,.dy-hide .dy-side i{visibility:hidden}
-.dy-flash{display:flex;flex-direction:column;gap:var(--gap);max-width:32em;width:100%;margin:0 auto}
+.dy-flash{display:flex;flex-direction:column;gap:var(--gap);max-width:36em;width:100%;margin:0 auto}
+.dy-cardbtn{display:block;width:100%;background:none;border:0;padding:0}
 .dy-reveal{min-height:4.6em;display:flex;flex-direction:column;justify-content:center;gap:.1em;text-align:center}
-.dy-reveal b{font-size:2em;font-weight:800;line-height:1.1}
-
-/* play: setup */
-.dy-players{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6em}
-.dy-kinds{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));gap:.5em}
-.dy-kind{display:flex;flex-direction:column;gap:.1em;text-align:left;background:var(--bg);border:var(--bw) solid var(--line);border-radius:calc(var(--r)*.8);padding:.45em .75em}
-.dy-kind b{font-weight:800;font-size:1.05em}
-.dy-kind span{font-size:.88em;color:var(--muted);font-weight:500}
-.dy-kind.on{background:var(--blue);color:#fff}
-.dy-kind.on span{color:#fff;opacity:.85}
+.dy-reveal b{font-size:2.6em;font-weight:800;line-height:1.1}
+.dy-reveal span{font-size:1.2em}
 
 /* play: game */
 .dy-scores{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:var(--gap);padding-top:4px}
-.dy-sc{display:flex;flex-direction:column;gap:.1em;min-width:0;background:var(--pc);color:var(--on);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 3px 0 var(--line);padding:.3em .6em;opacity:.5}
-.dy-sc.on{opacity:1;transform:translateY(-4px);box-shadow:0 7px 0 var(--line)}
-.dy-who{display:flex;align-items:center;gap:.35em;font-weight:800;min-width:0}
-.dy-who span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dy-who .av{font-size:1.3em;line-height:1}
-.dy-pts{display:flex;align-items:center;justify-content:space-between;gap:.4em;font-size:.85em;font-weight:700}
-.dy-pts .sc{display:inline-flex;align-items:center;gap:.3em;background:#fff;color:var(--on);border:2px solid var(--on);border-radius:999px;padding:0 .6em;font-size:1.25em;font-weight:800;font-variant-numeric:tabular-nums}
-.dy-pts .sc .st{fill:var(--saffron);stroke:var(--on)}
-.dy-stage{display:flex;flex-direction:column;gap:.75em;border-top-width:.7em;border-top-color:var(--pc)}
-.dy-turn{font-size:1.6em;font-weight:800;line-height:1.1}
-.dy-prompt{font-size:1.2em;font-weight:700}
+.dy-sc{display:flex;align-items:center;gap:.4em;min-width:0;background:var(--card);color:var(--ink);border:var(--bw) solid var(--line);border-radius:999px;padding:.2em .8em;font-weight:800}
+.dy-sc .av{font-size:1.3em;line-height:1}
+.dy-sc .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dy-sc .sc{display:inline-flex;align-items:center;gap:.25em;font-size:1.2em;font-variant-numeric:tabular-nums}
+.dy-sc .sc .st{fill:var(--saffron)}
+.dy-sc.on{background:var(--pc);color:var(--on);transform:translateY(-3px);box-shadow:0 5px 0 var(--line)}
+.dy-sc.on .sc .st{fill:#fff;stroke:var(--on)}
+.dy-stage{display:flex;flex-direction:column;gap:.8em;border-top-width:.7em;border-top-color:var(--pc)}
+.dy-turn{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1em .7em}
+.dy-turn b{font-size:1.7em;font-weight:800;line-height:1.1}
+.dy-turn span{font-size:1.25em;font-weight:700;color:var(--muted)}
 .dy-stim{display:flex;flex-direction:column;gap:.3em}
 .dy-stim .dy-bd{box-shadow:none;background:var(--bg)}
-.dy-nm{font-size:clamp(2.4em,10vmin,4.2em);font-weight:800;line-height:1.1;text-align:center;padding:.25em 0}
+.dy-nm{font-size:clamp(3em,14vmin,6.5em);font-weight:800;line-height:1.1;text-align:center;padding:.2em 0}
 .dy-opts{display:grid;grid-template-columns:repeat(var(--o,4),minmax(0,1fr));gap:var(--gap)}
-.dy-opt{position:relative;background:var(--bg);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 5px 0 var(--line);font-size:2.9em;line-height:1.6;min-height:1.9em;padding:0 0 .12em}
+.dy-opt{position:relative;background:var(--bg);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 5px 0 var(--line);font-size:3.5em;line-height:1.6;min-height:1.9em;padding:0 0 .12em}
 .dy-opt:not(:disabled):active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
 .dy-opt:disabled{cursor:default}
-.dy-opt kbd,.dy-opt em{position:absolute;top:.3em;font-family:var(--f-ui);font-style:normal;font-weight:800;line-height:1.3}
-.dy-opt kbd{left:.5em;font-size:.25em;color:var(--muted);border:2px solid var(--muted);border-radius:.4em;padding:0 .4em}
-.dy-opt em{right:.4em;top:.15em;font-size:.42em}
+.dy-opt em{position:absolute;top:.1em;right:.35em;font-family:var(--f-ui);font-style:normal;font-weight:800;font-size:.45em;line-height:1.3}
 .dy-opt.right{background:var(--ok-bg)} .dy-opt.right em{color:var(--ok)}
 .dy-opt.wrong{background:var(--no-bg)} .dy-opt.wrong em{color:var(--no)}
-.dy-fb{border:var(--bw) solid currentColor;border-radius:calc(var(--r)*.8);padding:.4em .8em;font-weight:800;font-size:1.15em}
-.dy-fb.ok{background:var(--ok-bg);color:var(--ok)} .dy-fb.no{background:var(--no-bg);color:var(--no)}
-.dy-fb .ar{font-size:1.3em;line-height:1}
-.dy-rank{display:flex;flex-direction:column;gap:.6em;list-style:none;margin:0;padding:0}
-.dy-rank li{display:flex;align-items:center;gap:.7em;background:var(--pc);color:var(--on);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);padding:.45em .9em;font-weight:800}
-.dy-rank .pos{min-width:4.4em;font-size:1.2em}
+.dy-res{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em;border:var(--bw) solid var(--line);border-radius:var(--r);padding:.5em .9em;font-weight:800}
+.dy-res.ok{background:var(--ok-bg);color:var(--ok)}
+.dy-res.no{background:var(--no-bg);color:var(--no)}
+.dy-res-ic{font-size:2.6em;line-height:1}
+.dy-res-tx{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .6em;font-size:1.7em;line-height:1.2}
+.dy-res-tx span{color:var(--ink)}
+.dy-res-tx .ar{font-size:1.5em;line-height:1.1}
+
+/* play: results */
+.dy-win{font-size:clamp(2.2em,8vmin,4.4em);text-align:center;line-height:1.1}
+.dy-rank{display:flex;flex-direction:column;gap:.5em;list-style:none;margin:0 auto;padding:0;width:100%;max-width:26em;font-size:1.5em}
+.dy-rank li{display:flex;align-items:center;gap:.6em;background:var(--pc);color:var(--on);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 4px 0 var(--line);padding:.3em .8em;font-weight:800}
+.dy-rank li.r1{font-size:1.35em}
+.dy-rank .pos{min-width:1.4em}
 .dy-rank .nm{flex:1;min-width:0;overflow-wrap:anywhere}
-.dy-rank .av{font-size:1.4em}
-.dy-rank .pts{font-size:1.2em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dy-rank .sc{display:inline-flex;align-items:center;gap:.25em;background:#fff;border:2px solid var(--on);border-radius:999px;padding:0 .5em;font-variant-numeric:tabular-nums}
+.dy-rank .sc .st{fill:var(--saffron);stroke:var(--on)}
+.dy-miss{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5em .8em}
+
 @media (max-width:640px){
-  .dy-lcard,.dy-g3,.dy-pairs,.dy-players{grid-template-columns:minmax(0,1fr)}
+  .dy-lcard,.dy-g3{grid-template-columns:minmax(0,1fr)}
   .dy-g4,.dy-scores,.dy-opts.o4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .dy-opt{font-size:2.5em}
-  #neu .g-mid{display:none}
-  #neu .dy-seg{flex:1}
+  .dy-opt{font-size:2.8em}
+  .dy-rank{font-size:1.2em}
+  .dy-res-tx{font-size:1.3em}
+  #neu .dy-seg{order:5;flex:1 0 100%}
   #neu .dy-seg button{flex:1;padding:.15em .4em}
 }
 
@@ -382,15 +392,27 @@ h2{font-size:1.15em}
     </div>
   </header>
   <section class="new-sec" lang="de">
-    <div class="sec-h"><span class="tag-new">Neu</span><h2>Dad bis Ya</h2><p>14 Buchstaben von <span class="ar" lang="ar">ض</span> bis <span class="ar" lang="ar">ي</span>. Für 4 Spieler.</p></div>
+    <div class="sec-h"><span class="tag-new">Neu</span><h2>Dad bis Ya</h2><p>4 Spieler · 14 Buchstaben</p></div>
     <div class="new-cards">
-      <button type="button" class="gcard" data-neu="lernen" style="--gc:#8CC8FF">
+      <button type="button" class="gcard wide" data-neu="lernen" style="--gc:#8CC8FF">
         <span class="g-art" aria-hidden="true"><span class="em">👀</span><span class="ar">ض</span></span>
-        <span class="g-name">Lernen</span><span class="g-desc">Ohne Punkte. Wir schauen, hören und sprechen zusammen.</span>
+        <span class="g-name">Lernen</span><span class="g-desc">Schauen, hören, sprechen. Ohne Punkte.</span>
       </button>
-      <button type="button" class="gcard" data-neu="spielen" style="--gc:#8EDC9F">
-        <span class="g-art" aria-hidden="true"><span class="em">🎲</span><span class="ar">ق</span></span>
-        <span class="g-name">Spielen</span><span class="g-desc">Zu viert. Alle sind der Reihe nach dran.</span>
+      <button type="button" class="gcard" data-neu="find" style="--gc:#FFD05C">
+        <span class="g-art" aria-hidden="true"><span class="em">🔎</span><span class="ar">ع</span></span>
+        <span class="g-name">Finde den Buchstaben</span><span class="g-desc">Lies den Namen. Tipp auf den Buchstaben.</span>
+      </button>
+      <button type="button" class="gcard" data-neu="form" style="--gc:#62D8CB">
+        <span class="g-art" aria-hidden="true"><span class="em">🧩</span><span class="ar">ـغـ</span></span>
+        <span class="g-name">Formen-Jagd</span><span class="g-desc">So sieht er im Wort aus. Wer ist das?</span>
+      </button>
+      <button type="button" class="gcard" data-neu="word" style="--gc:#BDB0FF">
+        <span class="g-art" aria-hidden="true"><span class="em">📖</span><span class="ar">ق</span></span>
+        <span class="g-name">Wort-Jagd</span><span class="g-desc">Welcher Buchstabe steckt im Wort?</span>
+      </button>
+      <button type="button" class="gcard" data-neu="say" style="--gc:#FF8FA0">
+        <span class="g-art" aria-hidden="true"><span class="em">🗣️</span><span class="ar">ط</span></span>
+        <span class="g-name">Sag den Laut</span><span class="g-desc">Sprich den Laut. Die Lehrkraft entscheidet.</span>
       </button>
     </div>
   </section>
@@ -460,11 +482,14 @@ h2{font-size:1.15em}
 <section id="neu" class="screen" lang="de" hidden>
   <header class="gbar">
     <button type="button" class="ib" id="n-home" aria-label="Zum Start">🏠</button>
-    <div class="g-mid"><span id="n-title">Dad bis Ya</span></div>
-    <div class="dy-seg" role="group" aria-label="Bereich">
-      <button type="button" data-act="view" data-v="lernen">Lernen</button>
-      <button type="button" data-act="view" data-v="spielen">Spielen</button>
+    <span id="n-title">Lernen</span>
+    <div class="dy-seg" id="n-tabs" role="group" aria-label="Lern-Art">
+      <button type="button" data-act="tab" data-v="buchstaben">Buchstaben</button>
+      <button type="button" data-act="tab" data-v="paare">Paare</button>
+      <button type="button" data-act="tab" data-v="karten">Karten</button>
     </div>
+    <span class="dy-fill"></span>
+    <span id="n-round" hidden></span>
     <div class="top-btns">
       <button type="button" class="ib mute-btn" aria-label="Ton an oder aus">🔊</button>
       <button type="button" class="ib board-btn" aria-label="Tafel öffnen">✏️</button>
@@ -1396,19 +1421,12 @@ const NEU = (function(){
       {a:'ف', an:'Fa', at:'ein Punkt', b:'ق', bn:'Qaf', bt:'zwei Punkte', note:'Zähl die Punkte!'}
     ]
   };
-  const RANGES = {
-    alle:['Alle 14', () => true],
-    schwer:['<span class="ar" lang="ar">ض – ق</span>', l => l.hard],
-    leicht:['<span class="ar" lang="ar">ك – ي</span>', l => !l.hard]
-  };
   const KINDS = {
     find:['Finde den Buchstaben','Du liest den Namen. Du tippst auf den Buchstaben.'],
     form:['Formen-Jagd','Der Buchstabe steht in einem Wort. Erkennst du ihn?'],
     word:['Wort-Jagd','Welcher Buchstabe steckt im Wort?'],
-    say:['Sag den Laut','Du sprichst. Die Lehrerin oder der Lehrer entscheidet.'],
-    mix:['Alles gemischt','Von jedem Spiel etwas.']
+    say:['Sag den Laut','Du sprichst. Die Lehrerin oder der Lehrer entscheidet.']
   };
-  const LV = {leicht:'🐣', schwer:'🚀'};
   const POS = {anfang:'am Anfang', mitte:'in der Mitte', ende:'am Ende', rechts:'nach einem anderen Buchstaben'};
 
   /* helpers */
@@ -1426,66 +1444,36 @@ const NEU = (function(){
     return j.a.slice(0, j.i).join('') + (j.jp ? ZWJ : '') + '<span class="dy-hl">' + (j.jp ? ZWJ : '') + ch + (j.jn ? ZWJ : '') + '</span>' + (j.jn ? ZWJ : '') + j.a.slice(j.i + 1).join('');
   }
   function where(word, ch){ const j = joins(word, ch); return j.i === 0 ? 'am Anfang' : (j.i === j.a.length - 1 ? 'am Ende' : 'in der Mitte'); }
-  const poolOf = r => DL.filter(RANGES[r][1]);
   const bd = (html, size) => '<div class="dy-bd ' + size + '">' + A(html, 'dy-ink') + '</div>';
   const speak = t => say({ar:t});
 
-  /* state */
-  const KEY = 'huroof.dadya.v1';
-  const N = {view:'lernen', tab:'buchstaben', range:'alle', idx:0, hide:false, cards:null, cardAt:0, cardOpen:false,
-    setup:{count:4, kind:'mix', range:'alle', rounds:5, players:[0,1,2,3].map(i => ({name:(S.players[i] && S.players[i].name) || '', avatar:AVATARS[i], level:i < 2 ? 'leicht' : 'schwer'}))},
-    game:null, quit:false};
-  try {
-    const d = JSON.parse(localStorage.getItem(KEY) || 'null'), s = N.setup;
-    if (d && typeof d === 'object') {
-      if ([2,3,4].indexOf(d.count) >= 0) s.count = d.count;
-      if (KINDS[d.kind]) s.kind = d.kind;
-      if (RANGES[d.range]) s.range = d.range;
-      if ([3,4,5].indexOf(d.rounds) >= 0) s.rounds = d.rounds;
-      if (Array.isArray(d.players)) d.players.slice(0, 4).forEach((p, i) => {
-        if (!p || typeof p !== 'object') return;
-        if (typeof p.name === 'string') s.players[i].name = p.name.slice(0, 12);
-        if (AVATARS.indexOf(p.avatar) >= 0) s.players[i].avatar = p.avatar;
-        if (LV[p.level]) s.players[i].level = p.level;
-      });
-    }
-  } catch (e) {}
-  const saveN = () => { try { localStorage.setItem(KEY, JSON.stringify(N.setup)); } catch (e) {} };
+  /* state: no settings, every card starts at once with four players */
+  const PLAYERS = [0,1,2,3].map(i => ({name:'Spieler ' + (i + 1), avatar:AVATARS[i], color:COLORS[i]}));
+  const ROUNDS = 4;
+  const TABS = [['buchstaben','Buchstaben'],['paare','Paare'],['karten','Karten']];
+  const N = {view:'lernen', tab:'buchstaben', idx:0, hide:false, cards:null, cardAt:0, cardOpen:false, game:null};
 
   /* learn views */
-  function vLernen(){
-    const tabs = [['buchstaben','Buchstaben'],['paare','Paare'],['karten','Karten']];
-    return '<div class="dy-head"><h1>Lernen</h1><p class="dy-lede">Hier gibt es keine Punkte. Wir schauen, hören und sprechen zusammen.</p></div>' +
-      '<div class="dy-row dy-tabs" role="group" aria-label="Lern-Art">' + tabs.map(t =>
-        '<button type="button" class="chip' + (N.tab === t[0] ? ' on' : '') + '" data-act="tab" data-v="' + t[0] + '" aria-pressed="' + (N.tab === t[0]) + '">' + t[1] + '</button>').join('') + '</div>' +
-      (N.tab === 'paare' ? vPaare() : N.tab === 'karten' ? vKarten() : vBuchstaben());
-  }
-  function rangeChips(cur, act){
-    return '<div class="dy-row" role="group" aria-label="Welche Buchstaben">' + Object.keys(RANGES).map(k =>
-      '<button type="button" class="chip' + (cur === k ? ' on' : '') + '" data-act="' + act + '" data-v="' + k + '" aria-pressed="' + (cur === k) + '">' + RANGES[k][0] + '</button>').join('') + '</div>';
-  }
   function vBuchstaben(){
-    const pool = poolOf(N.range); if (N.idx >= pool.length) N.idx = 0;
-    const l = pool[N.idx], f = forms(l.ch);
-    const strip = '<div class="dy-strip" dir="rtl">' + pool.map((x, i) =>
+    const l = DL[N.idx] || DL[0], f = forms(l.ch);
+    const strip = '<div class="dy-strip" dir="rtl">' + DL.map((x, i) =>
       '<button type="button" class="dy-lt ar' + (i === N.idx ? ' on' : '') + '" data-act="go" data-v="' + i + '" lang="ar" aria-label="' + esc(x.name) + '"' + (i === N.idx ? ' aria-current="true"' : '') + '>' + x.ch + '</button>').join('') + '</div>';
-    const twin = l.twin ? '<div class="dy-twin"><span>' + A('<b class="dy-hl">' + l.ch + '</b>') + esc(l.twin.a) + '</span><span>' + A('<b>' + l.twin.ch + '</b>') + esc(l.twin.name) + ': ' + esc(l.twin.b) + '</span></div>' : '';
+    const twin = l.twin ? '<p class="dy-twin">' + A(l.ch, 'dy-hl') + esc(l.twin.a) + ' · ' + A(l.twin.ch) + esc(l.twin.name) + ': ' + esc(l.twin.b) + '</p>' : '';
     const fl = l.ch === 'و' ? [['allein','Allein'],['ende','Nach einem Buchstaben']] : [['allein','Allein'],['anfang','Am Anfang'],['mitte','In der Mitte'],['ende','Am Ende']];
     const formTiles = fl.map(p => '<div class="dy-tile">' + bd(f[p[0]], 'md') + '<p class="dy-cap">' + p[1] + '</p></div>').join('');
     const wordTiles = l.words.map(w => {
-      const inner = bd(hl(w[0], l.ch), 'md') + '<p class="dy-cap"><b>' + esc(w[1]) + '</b>' + esc(w[2]) + ' · ' + where(w[0], l.ch) + '</p>';
+      const inner = bd(hl(w[0], l.ch), 'md') + '<p class="dy-cap"><b>' + esc(w[1]) + '</b> ' + esc(w[2]) + '</p>';
       return canSpeak ? '<button type="button" class="dy-tile" data-act="speak" data-v="' + w[0] + '" aria-label="' + esc(w[1]) + ' anhören">' + inner + '</button>' : '<div class="dy-tile">' + inner + '</div>';
     }).join('');
-    return rangeChips(N.range, 'range') + strip +
+    return strip +
       '<div class="dy-lcard">' + bd(l.ch, 'xl') +
-        '<div class="dy-info"><p class="dy-eye">Buchstabe ' + (N.idx + 1) + ' von ' + pool.length + '</p><h2>' + esc(l.name) + '</h2>' +
-        '<p class="dy-sound">' + esc(l.sound) + '</p><p>' + esc(l.tip) + '</p>' + twin +
+        '<div class="dy-info"><h1>' + esc(l.name) + '</h1><p class="dy-sound">' + esc(l.sound) + '</p><p class="dy-tip">' + esc(l.tip) + '</p>' + twin +
         '<div class="dy-row">' + (canSpeak ? '<button type="button" class="btn alt" data-act="speak" data-v="' + l.ar + '">🗣️ Anhören</button>' : '') +
-        '<button type="button" class="btn alt" data-act="write" data-v="' + l.ch + '">✏️ Schreiben</button></div></div></div>' +
-      '<div class="dy-stack"><h3>So sieht ' + esc(l.name) + ' im Wort aus</h3><div class="' + (fl.length === 4 ? 'dy-g4' : 'dy-g3') + '">' + formTiles + '</div></div>' +
-      '<div class="dy-stack"><h3>Wörter mit ' + esc(l.name) + '</h3><div class="dy-g3">' + wordTiles + '</div></div>' +
-      '<div class="dy-row sp"><button type="button" class="btn alt" data-act="step" data-v="-1"' + (N.idx === 0 ? ' disabled' : '') + '>Zurück</button>' +
-      '<button type="button" class="btn" data-act="step" data-v="1"' + (N.idx === pool.length - 1 ? ' disabled' : '') + '>Weiter</button></div>';
+        '<button type="button" class="btn alt" data-act="write" data-v="' + l.ch + '">✏️ Schreiben</button></div>' +
+        '<div class="dy-row dy-nav"><button type="button" class="btn alt" data-act="step" data-v="-1"' + (N.idx === 0 ? ' disabled' : '') + '>Zurück</button>' +
+        '<button type="button" class="btn" data-act="step" data-v="1"' + (N.idx === DL.length - 1 ? ' disabled' : '') + '>Weiter</button></div></div></div>' +
+      '<div class="' + (fl.length === 4 ? 'dy-g4' : 'dy-g3') + '">' + formTiles + '</div>' +
+      '<div class="dy-g3">' + wordTiles + '</div>';
   }
   function pairHtml(p){
     const side = (ch, n, t, red) => '<div class="dy-side">' + bd(red ? '<span class="dy-hl">' + ch + '</span>' : ch, 'pr') + '<b>' + esc(n) + '</b><i>' + esc(t) + '</i></div>';
@@ -1493,66 +1481,42 @@ const NEU = (function(){
   }
   function vPaare(){
     const h = N.hide ? ' dy-hide' : '';
-    return '<div class="dy-row sp"><p class="dy-lede">Die Lehrerin oder der Lehrer sagt einen Laut. Zeig auf den richtigen Buchstaben!</p>' +
+    return '<div class="dy-row sp"><p class="dy-lede">Hör zu. Zeig auf den richtigen Buchstaben!</p>' +
       '<button type="button" class="chip' + (N.hide ? ' on' : '') + '" data-act="hide" aria-pressed="' + N.hide + '">Namen verstecken</button></div>' +
-      '<div class="dy-stack' + h + '"><h2>Paare zum Hören</h2><div class="dy-pairs">' + PAIRS.hear.map(pairHtml).join('') + '</div></div>' +
-      '<div class="dy-stack' + h + '"><h2>Paare zum Sehen</h2><div class="dy-pairs">' + PAIRS.see.map(pairHtml).join('') + '</div></div>';
+      '<div class="dy-stack' + h + '"><p class="dy-eye">Zum Hören</p><div class="dy-pairs">' + PAIRS.hear.map(pairHtml).join('') + '</div></div>' +
+      '<div class="dy-stack' + h + '"><p class="dy-eye">Zum Sehen</p><div class="dy-pairs">' + PAIRS.see.map(pairHtml).join('') + '</div></div>';
   }
-  function dealCards(){ N.cards = shuffle(poolOf(N.range).map(l => l.ch)); N.cardAt = 0; N.cardOpen = false; }
+  function dealCards(){ N.cards = shuffle(DL.map(l => l.ch)); N.cardAt = 0; N.cardOpen = false; }
   function vKarten(){
     if (!N.cards) dealCards();
-    const l = BY[N.cards[N.cardAt]], last = N.cardAt === N.cards.length - 1;
-    return rangeChips(N.range, 'range') + '<div class="dy-flash"><p class="dy-eye" style="text-align:center">Karte ' + (N.cardAt + 1) + ' von ' + N.cards.length + '</p>' + bd(l.ch, 'xl') +
+    const l = BY[N.cards[N.cardAt]], last = N.cardAt === N.cards.length - 1, act = N.cardOpen ? 'card' : 'open';
+    return '<div class="dy-flash"><button type="button" class="dy-cardbtn" data-act="' + act + '" aria-label="Karte ' + (N.cardAt + 1) + ' von ' + N.cards.length + '">' + bd(l.ch, 'xxl') + '</button>' +
       '<div class="dy-reveal">' + (N.cardOpen ? '<b>' + esc(l.name) + '</b><span>' + esc(l.sound) + '</span>' : '<span class="dy-lede" style="margin:0 auto">Wie heißt dieser Buchstabe? Wie klingt er?</span>') + '</div>' +
-      '<div class="dy-row" style="justify-content:center">' + (N.cardOpen
-        ? '<button type="button" class="btn xl" data-act="card">' + (last ? 'Neu mischen' : 'Nächste Karte') + '</button>'
-        : '<button type="button" class="btn xl" data-act="open">Zeigen</button>') + '</div></div>';
+      '<div class="dy-row c"><button type="button" class="btn xl" data-act="' + act + '">' + (N.cardOpen ? (last ? 'Neu mischen' : 'Nächste Karte') : 'Zeigen') + '</button></div></div>';
   }
-
-  /* play: setup */
-  function vSetup(){
-    const s = N.setup;
-    const players = s.players.slice(0, s.count).map((p, i) =>
-      '<div class="pcard" style="--pc:' + COLORS[i] + '"><button type="button" class="pc-av" data-act="av" data-i="' + i + '" aria-label="Bild ändern">' + p.avatar + '</button>' +
-      '<div class="pc-main"><input class="pc-name" id="dy-name' + i + '" data-i="' + i + '" maxlength="12" value="' + esc(p.name) + '" placeholder="Spieler ' + (i + 1) + '" aria-label="Name von Spieler ' + (i + 1) + '" autocomplete="off">' +
-      '<div class="pc-lv" role="group" aria-label="Stufe">' + ['leicht','schwer'].map(v =>
-        '<button type="button" class="' + (p.level === v ? 'on' : '') + '" data-act="level" data-i="' + i + '" data-v="' + v + '" aria-pressed="' + (p.level === v) + '">' + LV[v] + ' ' + v + '</button>').join('') + '</div></div></div>').join('');
-    const kinds = Object.keys(KINDS).map(k =>
-      '<button type="button" class="dy-kind' + (s.kind === k ? ' on' : '') + '" data-act="kind" data-v="' + k + '" aria-pressed="' + (s.kind === k) + '"><b>' + KINDS[k][0] + '</b><span>' + KINDS[k][1] + '</span></button>').join('');
-    const nums = (list, cur, act) => '<div class="seg" role="group">' + list.map(n =>
-      '<button type="button" class="' + (cur === n ? 'on' : '') + '" data-act="' + act + '" data-v="' + n + '" aria-pressed="' + (cur === n) + '">' + n + '</button>').join('') + '</div>';
-    return '<div class="dy-head"><h1>Spielen</h1><p class="dy-lede">Alle sind der Reihe nach dran. Für jede richtige Antwort gibt es einen Stern.</p></div>' +
-      '<div class="panel dy-stack"><div class="dy-row sp"><h2>Wer spielt?</h2><div class="dy-row"><span class="dy-hint">Spieler oder Teams</span>' + nums([2,3,4], s.count, 'count') + '</div></div>' +
-        '<div class="dy-players">' + players + '</div><p class="dy-hint">🐣 leicht: 3 Antworten. 🚀 schwer: 4 Antworten, die sich ähnlich sehen.</p></div>' +
-      '<div class="panel dy-stack"><h2>Welches Spiel?</h2><div class="dy-kinds">' + kinds + '</div></div>' +
-      '<div class="panel dy-stack"><h2>Welche Buchstaben?</h2>' + rangeChips(s.range, 'srange') + '</div>' +
-      '<div class="panel dy-stack"><h2>Wie viele Runden?</h2><div class="dy-row">' + nums([3,4,5], s.rounds, 'rounds') +
-        '<span class="dy-hint">Das sind ' + (s.rounds * s.count) + ' Fragen. Jeder ist ' + s.rounds + '-mal dran.</span></div></div>' +
-      '<div class="dy-row"><button type="button" class="btn xl" data-act="start">Spiel starten</button></div>';
-  }
+  const vLernen = () => N.tab === 'paare' ? vPaare() : N.tab === 'karten' ? vKarten() : vBuchstaben();
 
   /* play: engine */
-  function newGame(){
-    const s = N.setup, n = s.count, total = n * s.rounds, pool = poolOf(s.range).map(l => l.ch);
-    let deck = [], kinds = [];
+  function newGame(kind){
+    const n = PLAYERS.length, total = n * ROUNDS, pool = DL.map(l => l.ch);
+    let deck = [];
     while (deck.length < total) { const d = shuffle(pool); if (deck.length && d[0] === deck[deck.length - 1]) d.push(d.shift()); deck = deck.concat(d); }
-    while (kinds.length < total) kinds = kinds.concat(s.kind === 'mix' ? shuffle(['find','form','word','say']) : [s.kind]);
-    N.game = {n:n, total:total, turn:0, deck:deck.slice(0, total), kinds:kinds.slice(0, total), q:null, ans:null, missed:[], done:false, tip:false,
-      players:s.players.slice(0, n).map((p, i) => ({name:p.name.trim() || ('Spieler ' + (i + 1)), avatar:p.avatar, color:COLORS[i], level:p.level, score:0}))};
-    N.quit = false; makeQ();
+    N.game = {kind:kind, n:n, total:total, turn:0, deck:deck.slice(0, total), q:null, ans:null, missed:[], done:false, tip:false,
+      players:PLAYERS.map(p => ({name:p.name, avatar:p.avatar, color:p.color, score:0}))};
+    makeQ();
   }
   function makeQ(){
-    const g = N.game, p = g.players[g.turn % g.n], l = BY[g.deck[g.turn]], kind = g.kinds[g.turn], hard = p.level === 'schwer', q = {kind:kind, ch:l.ch};
+    const g = N.game, l = BY[g.deck[g.turn]], kind = g.kind, q = {kind:kind, ch:l.ch};
     g.ans = null; g.tip = false;
-    if (kind === 'say') { q.twin = !!(hard && l.twin); }
-    else {
+    if (kind !== 'say') {
       let word = null;
       if (kind === 'word') { word = pick(WORDS.filter(w => w[0].indexOf(l.ch) >= 0)); q.word = word; }
       if (kind === 'form') { q.pos = l.ch === 'و' ? 'rechts' : pick(['anfang','mitte','ende']); q.glyph = forms(l.ch)[q.pos === 'rechts' ? 'ende' : q.pos]; }
+      /* four answers: the right one, one look-alike, two others */
       const bad = c => c === l.ch || (word && norm(word[0]).indexOf(c) >= 0);
-      const cand = hard ? shuffle(l.look.filter(c => !bad(c))) : [];
-      const rest = shuffle(DL.map(x => x.ch).filter(c => !bad(c) && cand.indexOf(c) < 0 && (hard || l.look.indexOf(c) < 0)));
-      q.opts = shuffle([l.ch].concat(cand.concat(rest).slice(0, (hard ? 4 : 3) - 1)));
+      const near = shuffle(l.look.filter(c => !bad(c))).slice(0, 1);
+      const rest = shuffle(DL.map(x => x.ch).filter(c => !bad(c) && l.look.indexOf(c) < 0));
+      q.opts = shuffle([l.ch].concat(near, rest.slice(0, 3 - near.length)));
     }
     g.q = q;
   }
@@ -1567,66 +1531,70 @@ const NEU = (function(){
     g.turn++;
     if (g.turn >= g.total) { g.done = true; g.q = null; sfx.win(); confetti(); } else makeQ();
   }
+
+  /* play: views */
   function vGame(){
     const g = N.game; if (g.done) return vEnd();
     const q = g.q, l = BY[q.ch], cur = g.turn % g.n, p = g.players[cur], a = g.ans;
     const scores = '<div class="dy-scores" style="--n:' + g.n + '">' + g.players.map((x, i) =>
-      '<div class="dy-sc' + (i === cur ? ' on' : '') + '" style="--pc:' + x.color + '"><span class="dy-who"><span class="av" aria-hidden="true">' + x.avatar + '</span><span>' + esc(x.name) + '</span></span>' +
-      '<span class="dy-pts"><span class="sc">' + STAR + x.score + '</span><span>' + (i === cur ? 'ist dran' : LV[x.level]) + '</span></span></div>').join('') + '</div>';
+      '<div class="dy-sc' + (i === cur ? ' on' : '') + '" style="--pc:' + x.color + '"' + (i === cur ? ' aria-current="true"' : '') + '><span class="av" aria-hidden="true">' + x.avatar + '</span><span class="nm">' + esc(x.name) + '</span><span class="sc">' + STAR + x.score + '</span></div>').join('') + '</div>';
     let prompt, stim, body;
     if (q.kind === 'find') { prompt = 'Finde diesen Buchstaben:'; stim = '<div class="dy-nm">' + esc(l.name) + '</div><p class="dy-cap">' + esc(l.sound) + '</p>'; }
     else if (q.kind === 'form') { prompt = 'Welcher Buchstabe ist das?'; stim = bd(q.glyph, 'lg') + '<p class="dy-cap">So sieht er ' + POS[q.pos] + ' aus.</p>'; }
-    else if (q.kind === 'word') { prompt = 'Welcher Buchstabe steckt in diesem Wort?'; stim = bd(a ? hl(q.word[0], q.ch) : q.word[0], 'lg') + '<p class="dy-cap">' + esc(q.word[1]) + ' · ' + esc(q.word[2]) + '</p>'; }
-    else {
-      prompt = q.twin ? 'Sag beide Laute. Erst den roten, dann den anderen.' : 'Sag den Laut!';
-      stim = bd(q.twin ? '<span class="dy-hl">' + l.ch + '</span>&nbsp;&nbsp;' + l.twin.ch : l.ch, 'lg') +
-        (g.tip || a ? '<p class="dy-cap"><b>' + esc(l.name) + '</b>' + esc(l.sound) + ' ' + esc(l.tip) + '</p>' : '');
-    }
+    else if (q.kind === 'word') { prompt = 'Welcher Buchstabe steckt im Wort?'; stim = bd(a ? hl(q.word[0], q.ch) : q.word[0], 'lg') + '<p class="dy-cap"><b>' + esc(q.word[1]) + '</b> ' + esc(q.word[2]) + '</p>'; }
+    else { prompt = 'Sag den Laut!'; stim = bd(l.ch, 'lg') + (g.tip || a ? '<p class="dy-cap">' + esc(l.sound) + ' ' + esc(l.tip) + '</p>' : ''); }
     if (q.kind === 'say') {
-      body = a ? '' : '<div class="dy-row sp"><button type="button" class="btn alt" data-act="tip"' + (g.tip ? ' disabled' : '') + '>Tipp zeigen</button>' +
-        '<div class="dy-row"><span class="dy-hint">Für die Lehrkraft:</span><button type="button" class="btn alt" data-act="judge" data-v="0">Noch nicht</button><button type="button" class="btn" data-act="judge" data-v="1">Richtig</button></div></div>';
+      body = a ? '' : '<div class="dy-row sp"><button type="button" class="btn alt" data-act="tip"' + (g.tip ? ' disabled' : '') + '>Tipp</button>' +
+        '<div class="dy-row"><button type="button" class="btn alt xl" data-act="judge" data-v="0">Noch nicht</button><button type="button" class="btn xl" data-act="judge" data-v="1">Richtig</button></div></div>';
     } else {
-      body = '<div class="dy-opts o' + q.opts.length + '" style="--o:' + q.opts.length + '">' + q.opts.map((c, i) => {
+      body = '<div class="dy-opts o' + q.opts.length + '" style="--o:' + q.opts.length + '">' + q.opts.map(c => {
         let cls = '', mark = '';
         if (a) { if (c === q.ch) { cls = ' right'; mark = '<em aria-hidden="true">✓</em>'; } else if (c === a.choice) { cls = ' wrong'; mark = '<em aria-hidden="true">✗</em>'; } }
-        return '<button type="button" class="dy-opt ar' + cls + '" data-act="pick" data-v="' + c + '" lang="ar"' + (a ? ' disabled' : '') + '>' + (a ? '' : '<kbd>' + (i + 1) + '</kbd>') + mark + c + '</button>';
+        return '<button type="button" class="dy-opt ar' + cls + '" data-act="pick" data-v="' + c + '" lang="ar"' + (a ? ' disabled' : '') + '>' + mark + c + '</button>';
       }).join('') + '</div>';
     }
-    const fb = a ? '<div class="dy-fb ' + (a.ok ? 'ok' : 'no') + '" role="status">' + (a.ok ? 'Richtig! Das ist ' : 'Noch nicht. Richtig ist ') + A(l.ch) + ' – ' + esc(l.name) + '.</div>' : '';
-    const last = g.turn === g.total - 1;
-    const quit = N.quit ? '<span class="dy-row"><span class="dy-hint">Wirklich beenden?</span><button type="button" class="btn alt" data-act="quit-yes">Ja</button><button type="button" class="btn alt" data-act="quit-no">Nein</button></span>'
-      : '<button type="button" class="btn alt" data-act="quit">Spiel beenden</button>';
+    const res = a ? '<div class="dy-res ' + (a.ok ? 'ok' : 'no') + '" role="status"><span class="dy-res-ic" aria-hidden="true">' + (a.ok ? '✓' : '✗') + '</span>' +
+      '<span class="dy-res-tx"><b>' + (a.ok ? 'Richtig!' : 'Noch nicht.') + '</b><span>' + A(l.ch) + ' ' + esc(l.name) + '</span></span>' +
+      '<button type="button" class="btn xl" id="dy-weiter" data-act="next">' + (g.turn === g.total - 1 ? 'Ergebnis' : 'Weiter') + '</button></div>' : '';
     return scores + '<div class="panel dy-stage" style="--pc:' + p.color + '">' +
-      '<div class="dy-row sp"><span class="dy-eye">Frage ' + (g.turn + 1) + ' von ' + g.total + '</span><span class="dy-eye">' + KINDS[q.kind][0] + ' · ' + p.level + '</span></div>' +
-      '<p class="dy-turn">' + p.avatar + ' ' + esc(p.name) + ', du bist dran!</p>' +
-      '<p class="dy-prompt">' + prompt + '</p><div class="dy-stim">' + stim + '</div>' + body + fb +
-      '<div class="dy-row sp">' + quit + (a ? '<button type="button" class="btn xl" id="dy-weiter" data-act="next">' + (last ? 'Zum Ergebnis' : 'Weiter') + '</button>' : '') + '</div></div>';
+      '<div class="dy-turn"><b>' + p.avatar + ' ' + esc(p.name) + '</b><span>' + prompt + '</span></div>' +
+      '<div class="dy-stim">' + stim + '</div>' + body + res + '</div>';
   }
   function vEnd(){
     const g = N.game, ord = g.players.map((p, i) => ({p:p, i:i})).sort((x, y) => y.p.score - x.p.score);
     let rank = 0, prev = null;
-    const list = ord.map((o, k) => {
-      if (o.p.score !== prev) { rank = k + 1; prev = o.p.score; }
-      return '<li style="--pc:' + o.p.color + '"><span class="pos">' + rank + '. Platz</span><span class="av" aria-hidden="true">' + o.p.avatar + '</span><span class="nm">' + esc(o.p.name) + '</span><span class="pts">' + o.p.score + (o.p.score === 1 ? ' Stern' : ' Sterne') + '</span></li>';
-    }).join('');
-    const miss = g.missed.length ? '<p class="dy-lede">Tipp auf einen Buchstaben. Dann lernen wir ihn noch einmal.</p><div class="dy-strip" dir="rtl">' + g.missed.map(c =>
-        '<button type="button" class="dy-lt ar" data-act="practice" data-v="' + c + '" lang="ar" aria-label="' + esc(BY[c].name) + '">' + c + '</button>').join('') + '</div>'
-      : '<p class="dy-lede">Alle Buchstaben waren richtig. Super!</p>';
-    return '<div class="dy-head"><h1>Fertig!</h1><p class="dy-lede">' + g.total + ' Fragen sind geschafft.</p></div><ol class="dy-rank">' + list + '</ol>' +
-      '<div class="panel dy-stack"><h2>Das üben wir noch</h2>' + miss + '</div>' +
-      '<div class="dy-row"><button type="button" class="btn xl" data-act="start">Nochmal spielen</button><button type="button" class="btn alt" data-act="quit-yes">Spiel ändern</button></div>';
+    ord.forEach((o, k) => { if (o.p.score !== prev) { rank = k + 1; prev = o.p.score; } o.rank = rank; });
+    const top = ord.filter(o => o.rank === 1);
+    const title = top.length === 1 ? top[0].p.avatar + ' ' + esc(top[0].p.name) + ' gewinnt!' : 'Unentschieden!';
+    const list = ord.map(o =>
+      '<li class="r' + o.rank + '" style="--pc:' + o.p.color + '"><span class="pos">' + o.rank + '.</span><span class="av" aria-hidden="true">' + o.p.avatar + '</span><span class="nm">' + esc(o.p.name) + '</span><span class="sc">' + STAR + o.p.score + '</span></li>').join('');
+    const miss = g.missed.length ? '<div class="dy-miss"><span class="dy-lede">Das üben wir noch:</span><div class="dy-strip" dir="rtl">' + g.missed.map(c =>
+        '<button type="button" class="dy-lt ar" data-act="practice" data-v="' + c + '" lang="ar" aria-label="' + esc(BY[c].name) + '">' + c + '</button>').join('') + '</div></div>'
+      : '<p class="dy-lede" style="margin:0 auto">Alles richtig. Super!</p>';
+    return '<h1 class="dy-win">' + title + '</h1><ol class="dy-rank">' + list + '</ol>' + miss +
+      '<div class="dy-row c"><button type="button" class="btn xl" data-act="start">Nochmal</button><button type="button" class="btn alt xl" data-act="home">Zum Start</button></div>';
   }
 
   /* render + events */
-  const root = $('#neu'), V = $('#n-view'), homeBtn = $('#n-home');
+  const root = $('#neu'), V = $('#n-view'), homeBtn = $('#n-home'), tabsEl = $('#n-tabs'), roundEl = $('#n-round');
   let armT2 = 0;
   function disarm2(){ clearTimeout(armT2); homeBtn.classList.remove('arm'); homeBtn.textContent = '🏠'; }
   function render(){
-    $$('.dy-seg button', root).forEach(b => { const on = b.getAttribute('data-v') === N.view; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
-    V.innerHTML = '<div class="dy">' + (N.view === 'lernen' ? vLernen() : (N.game ? vGame() : vSetup())) + '</div>';
+    const g = N.game, play = N.view === 'spielen' && !!g, live = play && !g.done;
+    $('#n-title').textContent = play ? KINDS[g.kind][0] : 'Lernen';
+    tabsEl.hidden = play;
+    $$('button', tabsEl).forEach(b => { const on = b.getAttribute('data-v') === N.tab; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+    roundEl.hidden = !live;
+    if (live) roundEl.textContent = (g.turn + 1) + ' / ' + g.total;
+    V.innerHTML = '<div class="dy">' + (play ? vGame() : vLernen()) + '</div>';
   }
-  function open(view){ N.view = view; disarm2(); show('neu'); render(); V.scrollTop = 0; }
-  function leave(){ disarm2(); try { window.speechSynthesis.cancel(); } catch (e) {} $('#confetti').innerHTML = ''; show('home'); }
+  function open(what){
+    disarm2(); $('#confetti').innerHTML = '';
+    if (what === 'lernen') { N.view = 'lernen'; N.game = null; }
+    else { audio(); newGame(what); N.view = 'spielen'; }
+    show('neu'); render(); V.scrollTop = 0;
+  }
+  function leave(){ disarm2(); try { window.speechSynthesis.cancel(); } catch (e) {} $('#confetti').innerHTML = ''; N.game = null; show('home'); }
   homeBtn.addEventListener('click', () => {
     const running = N.view === 'spielen' && N.game && !N.game.done;
     if (!running || homeBtn.classList.contains('arm')) { leave(); return; }
@@ -1635,48 +1603,30 @@ const NEU = (function(){
   });
   root.addEventListener('click', e => {
     const b = e.target.closest('[data-act]'); if (!b || b.disabled) return;
-    const act = b.getAttribute('data-act'), v = b.getAttribute('data-v'), s = N.setup, g = N.game;
+    const act = b.getAttribute('data-act'), v = b.getAttribute('data-v'), g = N.game;
     let top = false;
-    if (act === 'view') { N.view = v; top = true; }
-    else if (act === 'tab') { N.tab = v; }
-    else if (act === 'range') { N.range = v; N.idx = 0; N.cards = null; }
+    if (act === 'tab') { N.tab = v; top = true; }
     else if (act === 'go') { N.idx = +v; }
-    else if (act === 'step') { N.idx = clamp(N.idx + (+v), 0, poolOf(N.range).length - 1); }
+    else if (act === 'step') { N.idx = clamp(N.idx + (+v), 0, DL.length - 1); }
     else if (act === 'hide') { N.hide = !N.hide; }
     else if (act === 'open') { N.cardOpen = true; }
     else if (act === 'card') { if (N.cardAt >= N.cards.length - 1) dealCards(); else { N.cardAt++; N.cardOpen = false; } }
     else if (act === 'speak') { speak(v); return; }
     else if (act === 'write') { B.gi = Math.max(0, LETTERS.findIndex(x => x.ch === v)); B.guide = true; B.solid = true; openBoard(); return; }
-    else if (act === 'count') { s.count = +v; saveN(); }
-    else if (act === 'av') {
-      const p = s.players[+b.getAttribute('data-i')], used = s.players.slice(0, s.count).map(x => x.avatar);
-      let k = AVATARS.indexOf(p.avatar);
-      for (let n = 0; n < AVATARS.length; n++) { k = (k + 1) % AVATARS.length; if (used.indexOf(AVATARS[k]) < 0) { p.avatar = AVATARS[k]; break; } }
-      saveN();
-    }
-    else if (act === 'level') { s.players[+b.getAttribute('data-i')].level = v; saveN(); }
-    else if (act === 'kind') { s.kind = v; saveN(); }
-    else if (act === 'srange') { s.range = v; saveN(); }
-    else if (act === 'rounds') { s.rounds = +v; saveN(); }
-    else if (act === 'start') { $('#confetti').innerHTML = ''; audio(); newGame(); top = true; }
+    else if (act === 'start') { $('#confetti').innerHTML = ''; newGame(g.kind); top = true; }
+    else if (act === 'home') { leave(); return; }
     else if (act === 'pick') { answer(v === g.q.ch, v); }
     else if (act === 'judge') { answer(v === '1'); }
     else if (act === 'tip') { g.tip = true; }
     else if (act === 'next') { nextQ(); top = true; }
-    else if (act === 'quit') { N.quit = true; }
-    else if (act === 'quit-no') { N.quit = false; }
-    else if (act === 'quit-yes') { $('#confetti').innerHTML = ''; N.game = null; N.quit = false; top = true; }
-    else if (act === 'practice') { $('#confetti').innerHTML = ''; N.range = 'alle'; N.idx = DL.indexOf(BY[v]); N.tab = 'buchstaben'; N.view = 'lernen'; top = true; }
+    else if (act === 'practice') { $('#confetti').innerHTML = ''; N.game = null; N.idx = DL.indexOf(BY[v]); N.tab = 'buchstaben'; N.view = 'lernen'; top = true; }
     else return;
     render();
     if (top) V.scrollTop = 0;
     const w = $('#dy-weiter'); if (w && (act === 'pick' || act === 'judge')) w.focus();
   });
-  root.addEventListener('input', e => {
-    if (e.target.classList.contains('pc-name')) { N.setup.players[+e.target.getAttribute('data-i')].name = e.target.value.slice(0, 12); saveN(); }
-  });
   document.addEventListener('keydown', e => {
-    if (root.hidden || !$('#board').hidden || e.target.tagName === 'INPUT' || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (root.hidden || !$('#board').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
     const g = N.game;
     if (N.view === 'spielen' && g && !g.done) {
       if (!g.ans && g.q.opts && /^[1-4]$/.test(e.key)) {
@@ -1685,7 +1635,7 @@ const NEU = (function(){
       }
     } else if (N.view === 'lernen' && N.tab === 'buchstaben' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
       /* the alphabet runs right to left: the left arrow goes to the next letter */
-      N.idx = clamp(N.idx + (e.key === 'ArrowLeft' ? 1 : -1), 0, poolOf(N.range).length - 1); render();
+      N.idx = clamp(N.idx + (e.key === 'ArrowLeft' ? 1 : -1), 0, DL.length - 1); render();
     }
   });
   return {open:open, state:() => N, letters:DL, where:where};
